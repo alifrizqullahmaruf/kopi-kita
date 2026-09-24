@@ -1,0 +1,6 @@
+<!-- PLACEHOLDER: ganti file ini dengan logo asli Kopi Kita Roastery (nama file sama: logo.svg) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <circle cx="24" cy="24" r="23" fill="#1F3B2D"/>
+  <ellipse cx="24" cy="24" rx="10" ry="14" fill="#EDE3CF" transform="rotate(-20 24 24)"/>
+  <path d="M27 11 Q19 18 24 24 Q29 30 21 37" fill="none" stroke="#1F3B2D" stroke-width="2.4" stroke-linecap="round"/>
+</svg>
