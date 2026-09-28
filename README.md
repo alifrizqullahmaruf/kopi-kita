@@ -1,97 +1,119 @@
-# Kopi Kita Roastery — website
+# Kopi Kita Roastery
 
-Next.js 15 (App Router) + Tailwind CSS v4 + GSAP (ScrollTrigger, SplitText).
-Font di-host sendiri lewat Fontsource, jadi tidak bergantung pada Google Fonts saat build.
+**Category** &nbsp; Concept Website · Web Design & Development
+&nbsp;/&nbsp;
+**Year** &nbsp; 2026
+&nbsp;/&nbsp;
+**Live Link** &nbsp; _coming soon_
 
-## Menjalankan di VS Code
+Kopi Kita Roastery is a concept website for a small, home-based coffee roastery in Yogyakarta. It pairs warm, hand-drawn character with a WhatsApp-first ordering flow, and turns choosing a coffee into something you play with rather than read about.
 
-**Yang perlu terpasang dulu:** [Node.js](https://nodejs.org) versi 20 LTS atau lebih baru (cek dengan `node -v`) dan VS Code.
+> Portfolio project. The brand, products, prices and testimonials are fictional.
 
-1. Ekstrak zip, lalu di VS Code pilih **File → Open Folder…** dan buka folder `kopi-kita`.
-2. Buka terminal: **Terminal → New Terminal** (atau `` Ctrl+` ``).
-3. Pasang semua library (cukup sekali):
-   ```bash
-   npm install
-   ```
-4. Jalankan mode pengembangan:
-   ```bash
-   npm run dev
-   ```
-5. Buka **http://localhost:3000** di browser. Setiap file yang disimpan langsung terlihat di browser.
+---
 
-Untuk mencoba versi produksi: `npm run build` lalu `npm start`.
+## About the Project
 
-VS Code akan menawarkan ekstensi yang disarankan (Tailwind CSS IntelliSense dan Prettier) — klik **Install** agar kelas Tailwind mendapat auto-complete.
+Many small roasteries in Indonesia sell entirely through WhatsApp and Instagram DMs. Their customers don't want an account or a checkout. They want to know which coffee suits them, then send a message.
 
-**Kalau ada masalah:**
-- `npm` tidak dikenali → Node.js belum terpasang, atau VS Code perlu dibuka ulang setelah memasang Node.js.
-- Port 3000 sudah dipakai → jalankan `npm run dev -- -p 3001` lalu buka http://localhost:3001.
-- Error aneh setelah mengganti banyak file → hapus folder `.next` lalu jalankan `npm run dev` lagi.
+Kopi Kita is built around that habit. Every product, plan and call to action opens a WhatsApp chat that is already filled in, so the site only has to do two things well: help people choose, and make ordering one tap away.
 
-## Sebelum go-live (wajib)
+## Designing for Warmth,
+## Built for Ordering
 
-| Yang diganti | File |
+The goal was a site that feels like the roastery itself, small, personal and a little handmade, without giving up clarity. Each page has one job. **Beranda** introduces the brand and guides you to a coffee. **Produk** lets you filter the catalog. **Langganan** explains the monthly subscription. **Tentang** tells the story behind the roaster.
+
+---
+
+## Visual Language
+
+The palette comes straight from coffee: deep forest green (`hutan`), cream (`krem`), paper (`kertas`), roast brown (`sangrai`) and a soft leaf green (`daun`). Three typefaces each have one role:
+
+- **Bricolage Grotesque** for bold display headings
+- **Plus Jakarta Sans** for readable body text
+- **Caveat** for handwritten notes, the voice of the person behind the counter
+
+Hand-drawn doodles hop in a stop-motion rhythm. Annotations with sketched arrows point at the product. Sections are cut with slanted edges that shift as you scroll, and paper-like cards have torn edges. Together these details make the site feel crafted rather than templated.
+
+## Choosing Coffee by Taste
+
+The signature piece is the **roast dial**: a four-quadrant wheel from light to dark roast. Pick a quadrant, or press *"Putar, pilihkan untukku"*, and the needle spins before landing on a random roast. The result card cross-fades the serving photo, recolors the bean, and lists matching coffees, each with its own WhatsApp order button.
+
+The dial is fully accessible. It works as a `radiogroup` with roving tab index and arrow-key navigation, announces changes through `aria-live`, and falls back to instant transitions when reduced motion is requested.
+
+## Structured Storytelling
+
+The home page flows from first impression to action:
+
+1. **Hero:** a promise ("roasted this week, brewed at your home next week"), a large serving photo and hand-drawn annotations
+2. **Marquee:** short brand promises
+3. **Featured coffees:** a bento grid
+4. **Roast dial:** find a coffee by taste
+5. **Subscription:** three steps and a parcel-label illustration
+6. **Brew guide:** ratios for common home brewers
+7. **Testimonials, photo mosaic and closing call to action**
+
+---
+
+## Built for Real Use
+
+**Motion, as a system.** All scroll animation runs from one engine (`components/motion/PageMotion.tsx`, GSAP + ScrollTrigger + SplitText). Pages only add `data-*` attributes, with no animation code inside components:
+
+| Attribute | Effect |
 |---|---|
-| Nomor WhatsApp, alamat, jam, link Instagram & Maps | `lib/site.ts` |
-| Logo klien (nama file tetap `logo.svg`, atau ubah path di `Header.tsx` & `Footer.tsx`) | `public/logo.svg` |
-| **Testimoni asli 3 pelanggan lama** (minta izin mereka) | `lib/data.ts` → `testimonials` |
-| Katalog, harga, paket langganan, FAQ | `lib/data.ts` |
-| Cerita pemilik & foto | `app/tentang/page.tsx`, lalu ganti `<PhotoSlot>` dengan `<Image>` |
+| `data-hero` / `data-hero-item` | Staggered intro on page load (`split`, `rise`, `pop` variants) |
+| `data-split` | Headings reveal word by word on scroll |
+| `data-reveal-group` / `data-reveal-item` | Children appear in sequence |
+| `data-slant` | Slanted top edge that straightens on scroll |
+| `data-parallax`, `data-hero-parallax` | Gentle photo parallax |
+| `data-progress` | A line that grows with scroll progress |
 
-Ilustrasi kantong kopi (`CoffeeBag`) berfungsi sebagai "foto produk" sementara.
-Setelah foto produk asli tersedia, bisa diganti atau tetap dipakai sebagai gaya visual.
+**Accessible by default.** It has a skip link, labelled sections, `aria-current` navigation and keyboard-friendly controls. Every animation is disabled under `prefers-reduced-motion`, and content still shows if JavaScript fails, through a 3-second fallback.
 
-## Halaman
+**Light and fast.** The only runtime dependencies are Next.js, React and GSAP. Fonts are self-hosted with Fontsource, and images are compressed WebP.
 
-- `/` Beranda: hero, pita berjalan, bento produk, pemilih tingkat sangrai, langganan, panduan seduh, 3 testimoni, ajakan WhatsApp
-- `/produk` katalog dengan filter tingkat sangrai (`/produk?sangrai=terang` langsung terfilter)
-- `/langganan` paket, cara kerja, FAQ
-- `/tentang` cerita, foto, proses 4 langkah
+**Content separated from layout.** Business settings live in `lib/site.ts`, and all copy and product data live in `lib/data.ts`. Pages are composed from small, named section components.
 
-Tombol WhatsApp melayang ada di semua halaman (`components/WhatsAppFloat.tsx`, dipasang di `app/layout.tsx`).
-Setiap tombol pesan membuka WhatsApp dengan pesan yang sudah terisi nama produk atau paketnya.
+---
 
-## Sistem animasi
-
-Semua animasi scroll dikendalikan satu komponen, `components/motion/PageMotion.tsx`.
-Halaman cukup memberi atribut `data-*`:
-
-| Atribut | Efek |
-|---|---|
-| `data-hero` + `data-hero-item` | Intro berurutan saat halaman dibuka |
-| `data-hero-item="split"` | Judul muncul per kata |
-| `data-hero-item="rise"` | Naik dari bawah (kantong kopi) |
-| `data-hero-item="pop"` | Membesar dengan pantulan (biji kopi, ilustrasi) |
-| `data-split` | Judul muncul per kata saat di-scroll |
-| `data-reveal-group` / `data-reveal-item` | Anak-anak muncul bergantian |
-| `data-slant` (+ kelas `slant`) | Tepi atas miring, kemiringannya berubah saat di-scroll |
-| `data-progress` | Garis yang memanjang mengikuti scroll |
-
-Animasi interaksi ada di komponennya masing-masing:
-`RoastFinder` (warna biji berubah, biji berputar, isi berganti), `BrewGuide` (angka rasio berguling),
-`Catalog` (kartu muncul ulang saat filter diganti).
-
-Animasi CSS murni: pita berjalan (`.marquee`, berhenti saat di-hover) dan goyangan ilustrasi (`.wobble`, `.wobble-slow`).
-
-Aksesibilitas: semua animasi mati bila pengguna mengaktifkan `prefers-reduced-motion`,
-konten tetap tampil walau JavaScript gagal (jaring pengaman 3 detik), tab dan pilihan sangrai bisa dipakai dengan keyboard.
-
-## Struktur
+## A Foundation for Growth
 
 ```
 app/
-  layout.tsx          header, footer, WA melayang, mesin animasi
-  page.tsx            beranda
+  page.tsx               home, composed from sections
   produk/ langganan/ tentang/
 components/
-  motion/PageMotion.tsx
-  Header, Footer, Marquee, WhatsAppFloat
-  ProductCards, RoastFinder, BrewGuide, Catalog
-  Testimonials, Steps, ParcelLabel, CtaVisit
-  SectionHeading, PageHero, PhotoSlot, Illustrations
+  home/                  HeroSection, FeaturedSection, RoastFinderSection, …
+    hero/                HeroIntro, HeroPhoto, HeroCoffeeNote, HeroPita, …
+  roast-wheel/           RoastDial, DialSlice, RoastResultCard, RoastPanel, …
+  langganan/             PlansSection, PlanCard, FaqSection, …
+  tentang/               AboutPhotosSection, ProcessSection
+  motion/PageMotion.tsx  the animation engine
 lib/
-  site.ts             konfigurasi & pembuat link WhatsApp
-  data.ts             semua isi konten
-  gsap.ts             registrasi plugin GSAP
+  site.ts                site settings and WhatsApp link builders
+  data.ts                products, roast levels, plans, FAQ, testimonials
+  gsap.ts                GSAP plugin registration
 ```
-# kopi-kita
+
+Adding a coffee, a plan or a FAQ means editing data, not markup. A new section is a new component dropped into a page.
+
+## Clarity that Feels Handmade
+
+Kopi Kita shows that a small business site can be both personal and well engineered: hand-drawn in spirit, systematic underneath, and focused on getting a visitor from *"which coffee should I get?"* to *"order sent"* in as few steps as possible.
+
+---
+
+## Tech Stack
+
+Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · GSAP (ScrollTrigger, SplitText) · Fontsource
+
+## Running Locally
+
+Requires Node.js 20 LTS or newer.
+
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm start        # serve the production build
+```
