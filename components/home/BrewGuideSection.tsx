@@ -10,7 +10,6 @@ export default function BrewGuideSection() {
           <SectionHeading
             note="sudah punya kopinya?"
             title="Seduh dengan alat yang ada di rumah"
-            text="Takaran awal yang kami pakai sendiri. Setelah itu, sesuaikan dengan lidahmu."
           />
         </div>
         <div data-reveal-group className="mt-14">

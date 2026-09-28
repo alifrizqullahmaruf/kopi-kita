@@ -8,7 +8,6 @@ export default function Testimonials() {
         <SectionHeading
           note="dari yang sudah langganan"
           title="Kata pelanggan pertama kami"
-          text="Mereka yang sudah ngopi bareng kami sejak kantong pertama."
         />
       </div>
       <ul data-reveal-group className="mt-14 grid gap-5 md:grid-cols-3 md:items-start">

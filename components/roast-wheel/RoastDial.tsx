@@ -5,6 +5,7 @@ import DialSlice from "./DialSlice";
 import DialNeedle from "./DialNeedle";
 import DialKnob from "./DialKnob";
 import SpinControls from "./SpinControls";
+import DialDecor from "./DialDecor";
 
 /** Dial sangrai: 4 kuadran, jarum, kenop tengah, dan tombol putar. */
 export default function RoastDial({
@@ -25,7 +26,8 @@ export default function RoastDial({
   onSpin: () => void;
 }) {
   return (
-    <div className="mx-auto w-full max-w-[440px] lg:max-w-[340px]">
+    // desktop: rata kiri dengan sedikit jarak, supaya ada ruang untuk doodle di kiri & catatan di kanan
+    <div className="mx-auto w-full max-w-[440px] lg:mr-0 lg:ml-16 lg:max-w-[340px]">
       <div className="relative aspect-square [container-type:inline-size]">
         <div
           role="radiogroup"
@@ -51,6 +53,7 @@ export default function RoastDial({
 
         <DialNeedle ref={needleRef} />
         <DialKnob color={roastLevels[idx].bean} />
+        <DialDecor />
       </div>
 
       <SpinControls spinning={spinning} onSpin={onSpin} />

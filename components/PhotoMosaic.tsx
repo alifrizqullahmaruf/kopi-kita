@@ -43,7 +43,6 @@ export default function PhotoMosaic() {
         <SectionHeading
           note="satu kantong, banyak cara"
           title="Seduh sesukamu di rumah"
-          text="Biji yang sama bisa jadi kopi hitam pagi hari atau es kopi susu sore hari. Foto di bawah adalah contoh penyajian."
         />
       </div>
 

@@ -206,24 +206,24 @@ export const subscribeSteps = [
   },
 ];
 
-// TODO: WAJIB ganti dengan testimoni asli dari 3 pelanggan lama (dengan izin mereka)
+// Data dummy untuk portfolio — nama & testimoni fiktif
 export const testimonials = [
   {
     quote:
       "Sudah enam bulan langganan. Kopinya selalu datang masih wangi, dan kalau mau ganti jenis tinggal chat.",
-    name: "Nama Pelanggan 1",
+    name: "Rina Kusumawati",
     detail: "Langganan Tiap Pagi, Sleman",
   },
   {
     quote:
       "House Blend-nya pas sekali untuk kopi susu di rumah. Anak-anak saya sekarang ikut ketagihan.",
-    name: "Nama Pelanggan 2",
+    name: "Bayu Pratama",
     detail: "Pelanggan sejak 2024, Bantul",
   },
   {
     quote:
       "Yang saya suka, tanggal sangrainya selalu ditulis di kemasan. Jadi tahu persis kopinya masih segar.",
-    name: "Nama Pelanggan 3",
+    name: "Sekar Ayuningtyas",
     detail: "Pembeli Gayo Wine, Kota Yogyakarta",
   },
 ];

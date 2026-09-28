@@ -4,8 +4,8 @@
 
 export const site = {
   name: "Kopi Kita Roastery",
-  // TODO: nomor WhatsApp bisnis klien, format internasional tanpa "+" / spasi
-  whatsapp: "6281234567890",
+  // nomor WhatsApp, format internasional tanpa "+" / spasi
+  whatsapp: "6282111492113",
   // TODO: alamat & jam asli
   city: "Yogyakarta",
   address: "Jl. Contoh No. 12, Sleman, Yogyakarta",
