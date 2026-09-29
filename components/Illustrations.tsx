@@ -9,7 +9,9 @@ export function CoffeeBag({
   label = "#E9DFC8",
   bean = "#5F3B22",
   roastIndex = 2,
-  date = "12 May",
+  date = "12/05",
+  ariaLabel,
+  roastedText = "roasted",
   ...props
 }: P & {
   title: string;
@@ -18,6 +20,8 @@ export function CoffeeBag({
   bean?: string;
   roastIndex?: number; // 0..3
   date?: string;
+  ariaLabel?: string;
+  roastedText?: string;
 }) {
   const words = title.split(" ");
   const half = Math.ceil(words.length / 2);
@@ -25,7 +29,7 @@ export function CoffeeBag({
     title.length > 12 ? [words.slice(0, half).join(" "), words.slice(half).join(" ")] : [title];
 
   return (
-    <svg viewBox="0 0 200 280" role="img" aria-label={`${title} coffee bag`} {...props}>
+    <svg viewBox="0 0 200 280" role="img" aria-label={ariaLabel ?? title} {...props}>
       {/* lipatan atas bergerigi */}
       <path
         d="M22 18 l8 -8 l8 8 l8 -8 l8 8 l8 -8 l8 8 l8 -8 l8 8 l8 -8 l8 8 l8 -8 l8 8 l8 -8 l8 8 l8 -8 l8 8 l8 -8 l8 8 l8 -8 l6 6 V44 H22 Z"
@@ -87,7 +91,7 @@ export function CoffeeBag({
         fill="#5F3B22"
         style={{ font: "600 15px var(--font-hand)" }}
       >
-        roasted {date}
+        {roastedText} {date}
       </text>
     </svg>
   );

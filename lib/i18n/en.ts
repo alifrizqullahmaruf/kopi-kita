@@ -1,0 +1,388 @@
+import type { Dict } from "./types";
+
+export const en: Dict = {
+  meta: {
+    title: "Kopi Kita Roastery — Fresh-roasted coffee from Yogyakarta",
+    description:
+      "A home roastery in Yogyakarta, roasting Indonesian coffee every week. Buy a single bag or subscribe monthly, and order straight through WhatsApp.",
+    ogLocale: "en_US",
+  },
+  skipLink: "Skip to content",
+  langSwitch: { aria: "Language" },
+
+  nav: [
+    { path: "/", label: "Home" },
+    { path: "/shop", label: "Shop" },
+    { path: "/subscribe", label: "Subscribe" },
+    { path: "/about", label: "About us" },
+  ],
+  site: {
+    roastDays: "Tuesdays & Fridays",
+    hours: "Mon–Sat, 9 am–5 pm (pickup by appointment)",
+  },
+  wa: {
+    hello: "Hi Kopi Kita Roastery, I have a question about your coffee.",
+    order: (name) => `Hi Kopi Kita Roastery, I'd like to order ${name}. Is it in stock?`,
+    subscribe: (plan) => `Hi Kopi Kita Roastery, I'm interested in the ${plan} plan. How do I get started?`,
+    startSubscription: "Hi Kopi Kita Roastery, I'd like to start a subscription.",
+    sharePhoto: "Hi Kopi Kita Roastery, I'd like to share a photo of a coffee I made with your beans.",
+  },
+
+  header: {
+    info: (city, roastDays) => [`Home roastery in ${city}`, `Roasting ${roastDays}`, "Shipping across Indonesia"],
+    homeAria: (name) => `${name}, home`,
+    mainNav: "Main navigation",
+    mobileNav: "Mobile navigation",
+    order: "Order",
+    menu: "Menu",
+    close: "Close",
+  },
+  footer: {
+    blurb: (city, roastDays) =>
+      `A home roastery in ${city}. Coffee from across Indonesia, roasted in small batches on ${roastDays}.`,
+    chat: "Chat on WhatsApp",
+    explore: "Explore",
+    visit: "Visit us",
+    maps: "Open in Google Maps",
+    rights: "All orders are handled over WhatsApp.",
+  },
+  waFloat: { aria: "Chat with us on WhatsApp", label: "Chat with us" },
+  cta: {
+    title: "Want to try before you buy? Just message us.",
+    text: "Ask which coffee suits you, request a sample, or arrange a pickup. We usually reply the same day.",
+    button: "Chat on WhatsApp",
+    address: "Address",
+    roastDays: "Roast days",
+    roastDaysValue: (days) => `${days}, shipped after a 2-day rest`,
+    pickup: "Pickup",
+  },
+
+  hero: {
+    note: (city) => `a home roastery in Sleman, ${city}`,
+    title: "Roasted this week, brewed at your place the next.",
+    text: "Small-batch coffee from across Indonesia. Buy a bag when you need one, or subscribe and let it show up on its own every month.",
+    order: "Order on WhatsApp",
+    browse: "See our coffee",
+    photoAlt: "A glass of iced black coffee brewed with Kopi Kita beans",
+    brewedWith: "brewed with",
+    roastAria: "Light roast, 1 of 4",
+    roastName: "light roast",
+    brewNote: "brewed on a V60, then poured over ice",
+    marquee: [
+      "Whole bean or ground",
+      "Roast date on every bag",
+      "Pause your subscription anytime",
+      "Shipping across Indonesia",
+      "Order with one WhatsApp message",
+    ],
+  },
+  featured: {
+    note: "on the roaster this week",
+    title: "What we're roasting right now",
+    text: "The four coffees people reorder most. Every one comes as whole beans or ground to suit your brewer.",
+    action: "See all our coffee",
+  },
+  roastFinder: { note: "not sure where to start?", title: "Start with the flavors you like" },
+  roastWheel: {
+    groupAria: "Roast level",
+    spin: "Spin it, pick one for me",
+    spinning: "Spinning…",
+    orTap: "or tap one yourself",
+    serveAs: (serve) => `great as an ${serve}`,
+    photoAlt: (serve, roast) => `An ${serve} made with a ${roast.toLowerCase()} roast`,
+    live: (roast, taste) => `${roast} roast: ${taste}`,
+    seeAll: (roast) => `See all ${roast.toLowerCase()} roasts`,
+  },
+  subscribeTeaser: {
+    note: "never run out again",
+    title: "Coffee that shows up every month",
+    cta: "See subscription plans",
+  },
+  parcel: {
+    from: "From",
+    to: "To",
+    toValue: "you, every month",
+    stamp: ["monthly", "delivery"],
+    footnote: "Monthly price, shipping not included.",
+  },
+  brewSection: {
+    note: "got your beans?",
+    title: "Brew with whatever you have at home",
+    text: "These are the starting recipes we use ourselves. From there, adjust to your own taste.",
+  },
+  brew: { tablistAria: "Brewing method", ratioLabel: "coffee : water", grind: "Grind", water: "Water", time: "Time" },
+  testimonialsSection: {
+    note: "from our subscribers",
+    title: "What our first customers say",
+    text: "People who've been drinking our coffee since the very first bag.",
+  },
+  mosaic: {
+    note: "one bag, lots of ways",
+    title: "Brew it however you like",
+    text: "The same beans can be your black coffee in the morning and an iced kopi susu in the afternoon. The photos below are serving ideas.",
+    tiles: [
+      { alt: "Layered iced kopi susu, Indonesian-style milk coffee", caption: "afternoon kopi susu" },
+      { alt: "Iced mocha topped with chocolate shavings", caption: "weekend mocha" },
+      { alt: "Iced latte with a layer of espresso on top", caption: "morning latte" },
+      { alt: "Iced vanilla latte with coffee beans and a vanilla pod", caption: "vanilla latte" },
+      { alt: "Iced black coffee next to a wooden measuring scoop", caption: "one scoop, one glass" },
+    ],
+    ctaNote: "made something with our beans?",
+    ctaButton: "Send us a photo",
+  },
+
+  product: {
+    order: "Order",
+    orderSr: (name) => ` ${name} on WhatsApp`,
+    from: (price) => `from ${price}`,
+    fromPerSize: (price, size) => `from ${price} / ${size}`,
+    greatAs: (serve) => `great as an ${serve}`,
+    asServe: (serve) => `as an ${serve}`,
+    roastOrigin: (roast, origin) => `${roast} roast, ${origin}`,
+    servingAlt: (name, serve) => `Serving idea for ${name}: ${serve}`,
+    roast: "Roast",
+    tastes: "Tastes like",
+    orderOnWhatsApp: "Order on WhatsApp",
+    bagAria: (name) => `${name} coffee bag`,
+    roasted: "roasted",
+    bagDate: "12 May",
+  },
+  catalog: {
+    legend: "filter by roast",
+    all: "All",
+    showing: (n) => `Showing ${n} ${n === 1 ? "coffee" : "coffees"}`,
+  },
+
+  shopPage: {
+    metaTitle: "Shop",
+    metaDescription: "Every coffee Kopi Kita Roastery is roasting right now, from light to dark. Order on WhatsApp.",
+    note: "in stock this week",
+    title: "All our coffee",
+    text: "Every bag has its roast date written on it. Pick a coffee, send us a message, and we'll help you choose the right grind for your brewer.",
+    ctaTitle: "Can't find what you're after?",
+    ctaText: "What we have changes with the harvest. Ask us what's coming next, or let us pick something for you.",
+  },
+  subscribePage: {
+    metaTitle: "Subscribe",
+    metaDescription: "A monthly coffee subscription from Kopi Kita Roastery. Swap coffees or pause whenever you like.",
+    note: "monthly subscription",
+    title: "Fresh coffee you never have to remember to buy",
+    text: "Pick a plan, and we'll roast and ship it in the first week of every month. Want a different coffee, or a month off? Just tell us on WhatsApp.",
+    button: "Start my subscription",
+    ctaTitle: "Ready when you are.",
+  },
+  plansSection: {
+    aria: "Subscription plans",
+    footnote: "Prices don't include shipping. In Yogyakarta, you can pick up your order from us.",
+    popular: "most popular",
+    perMonth: " / month",
+    choose: (name) => `Choose ${name}`,
+  },
+  howItWorks: { title: "How it works" },
+  faqSection: { title: "Questions we get a lot", text: "Something else on your mind? Just ask us on WhatsApp." },
+  aboutPage: {
+    metaTitle: "About us",
+    metaDescription: "The story behind Kopi Kita Roastery, a home roastery in Yogyakarta, and how we roast our coffee.",
+    note: (city) => `from a small kitchen in ${city}`,
+    title: "A home roastery, making coffee to share",
+    text: "It started with one small roaster at home and friends who kept asking us to bring them coffee. Now it goes out to a lot more homes, but we still make it the same way.",
+    ctaTitle: "Drop by, or message us first.",
+  },
+  aboutPhotos: [
+    { alt: "Warm, freshly roasted beans in the palm of a hand", caption: "small-batch roasting" },
+    { alt: "Sorting green coffee beans on a wooden table", caption: "sorting green beans" },
+    { alt: "Paper bags of coffee, packed and ready to ship", caption: "ready to ship" },
+  ],
+  process: { note: "from sack to cup", title: "Four steps behind every bag" },
+  notFound: {
+    note: "page not found",
+    title: "The coffee’s still here. This page isn’t.",
+    text: "The link you followed doesn’t go anywhere. Head back home, or have a look at our coffee.",
+    home: "Back home",
+    browse: "See our coffee",
+  },
+
+  roastLevels: {
+    light: {
+      label: "Light",
+      taste: "Bright, fruity, floral",
+      forWho: "For black coffee drinkers who like it light and fragrant. Made for pour-over.",
+      serve: "iced black coffee",
+    },
+    medium: {
+      label: "Medium",
+      taste: "Caramel-sweet and balanced",
+      forWho: "New to black coffee? Start here. Nothing too sharp, nothing too bitter.",
+      serve: "iced latte",
+    },
+    "medium-dark": {
+      label: "Medium-dark",
+      taste: "Chocolate, nuts, fuller body",
+      forWho: "Made to go with milk. What we'd reach for to make kopi susu or a moka pot every morning.",
+      serve: "iced kopi susu",
+    },
+    dark: {
+      label: "Dark",
+      taste: "Bold, bittersweet, a little smoky",
+      forWho: "For people who like their coffee strong. Great as kopi tubruk, the unfiltered Javanese way.",
+      serve: "iced mocha",
+    },
+  },
+  products: {
+    "house-blend": {
+      name: "Kopi Kita House Blend",
+      origin: "Merapi & Temanggung",
+      process: "Arabica–robusta blend",
+      notes: ["Dark chocolate", "Palm sugar", "Roasted peanut"],
+      description: "Our everyday blend, built for kopi susu at home. Still holds up brewed strong as tubruk.",
+      badge: "Best seller",
+    },
+    "merapi-arabica": {
+      name: "Merapi Arabica",
+      origin: "Slopes of Mt. Merapi, Sleman",
+      process: "Natural",
+      notes: ["Jackfruit", "Caramel", "Warm spice"],
+      description: "Grown just up the road from us. Sweet and fruity, with a little spice at the finish.",
+    },
+    "gayo-wine": {
+      name: "Gayo Wine",
+      origin: "Central Aceh, Sumatra",
+      process: "Wine process",
+      notes: ["Red grape", "Dried fruit", "Milk chocolate"],
+      description: "A long, slow fermentation gives it the smell of very ripe fruit. Best on a V60.",
+    },
+    "temanggung-robusta": {
+      name: "Temanggung Robusta",
+      origin: "Temanggung, Central Java",
+      process: "Ripe-picked, natural",
+      notes: ["Dark cocoa", "Tobacco", "Clove"],
+      description:
+        "Robusta picked only when the cherries are fully red, so it's strong without the harsh, dry aftertaste. Our first choice for tubruk.",
+    },
+    kintamani: {
+      name: "Kintamani",
+      origin: "Bangli, Bali",
+      process: "Washed",
+      notes: ["Orange", "Jasmine tea", "Honey"],
+      description: "Clean and bright, with a gentle citrus acidity.",
+    },
+    "toraja-sapan": {
+      name: "Toraja Sapan",
+      origin: "Tana Toraja, Sulawesi",
+      process: "Wet-hulled",
+      notes: ["Warm spice", "Cocoa", "Earthy"],
+      description: "Heavy, warm and low in acidity. Good on its own, even better with milk.",
+    },
+  },
+  plans: {
+    "one-bag": { name: "One Bag", amount: "250 g / month", cups: "about 16 cups", desc: "For a few cups a week." },
+    "every-morning": {
+      name: "Every Morning",
+      amount: "500 g / month",
+      cups: "about 33 cups",
+      desc: "One cup every morning, and you never run out.",
+    },
+    "whole-house": {
+      name: "Whole House",
+      amount: "1 kg / month",
+      cups: "about 66 cups",
+      desc: "For a home where everyone drinks coffee.",
+    },
+  },
+  brewGuides: {
+    tubruk: {
+      name: "Tubruk",
+      grind: "Fine",
+      temp: "93°C",
+      time: "4 min",
+      steps: "Indonesia's no-filter brew. Pour hot water straight onto the grounds, stir once, wait for them to settle, then sip slowly.",
+    },
+    v60: {
+      name: "V60",
+      grind: "Medium-fine",
+      temp: "90°C",
+      time: "2½ min",
+      steps: "Wet the grounds and wait 30 seconds, then pour in slow circles in three stages.",
+    },
+    "moka-pot": {
+      name: "Moka pot",
+      grind: "Medium-fine",
+      temp: "Boiling",
+      time: "5 min",
+      steps: "Fill with water up to the valve, level the grounds without pressing them down, and heat on low.",
+    },
+    "french-press": {
+      name: "French press",
+      grind: "Coarse",
+      temp: "94°C",
+      time: "4 min",
+      steps: "Pour in all the water, put the lid on, wait four minutes, then press the plunger down slowly.",
+    },
+  },
+  subscribeSteps: [
+    {
+      title: "Pick a plan and a coffee",
+      text: "Message us on WhatsApp with your plan, your coffee, and whether you want whole beans or ground.",
+    },
+    { title: "We roast it for you", text: "We roast on Tuesdays and Fridays, then let the beans rest for two days." },
+    {
+      title: "It shows up at your door",
+      text: "Ships in the first week of every month. Swap coffees or pause whenever you like.",
+    },
+  ],
+  testimonials: [
+    {
+      quote:
+        "Six months in, and every bag has arrived smelling fresh. When I want to try something different, I just send a message.",
+      name: "Rina Kusumawati",
+      detail: "Every Morning subscriber, Sleman",
+    },
+    {
+      quote: "The House Blend is exactly what I wanted for kopi susu at home. Now my kids keep stealing sips.",
+      name: "Bayu Pratama",
+      detail: "Customer since 2024, Bantul",
+    },
+    {
+      quote: "I love that the roast date is written on every bag. I always know exactly how fresh my coffee is.",
+      name: "Sekar Ayuningtyas",
+      detail: "Gayo Wine regular, Yogyakarta",
+    },
+  ],
+  processSteps: [
+    {
+      title: "Sourcing",
+      text: "We taste samples from farmers and collectors before we buy anything. If a coffee doesn't pass our cupping, we don't sell it.",
+    },
+    { title: "Roasting", text: "Small batches, roasted at our home in Sleman every Tuesday and Friday." },
+    {
+      title: "Resting",
+      text: "Freshly roasted beans need 2–3 days to release their gas. Rested coffee brews cleaner and tastes clearer.",
+    },
+    {
+      title: "Shipping",
+      text: "Packed in bags with a one-way valve, roast date written by hand, and sent anywhere in Indonesia.",
+    },
+  ],
+  faqs: [
+    {
+      q: "Can you grind the coffee for me?",
+      a: "Yes. Tell us what you brew with (tubruk, V60, moka pot or French press) and we'll grind it to match.",
+    },
+    {
+      q: "How do I pay?",
+      a: "For now, all orders go through WhatsApp. You can pay by bank transfer or QRIS, Indonesia's standard QR payment.",
+    },
+    {
+      q: "Can I pause or cancel my subscription?",
+      a: "Anytime. Just let us know before the 25th so we can adjust next month's delivery.",
+    },
+    {
+      q: "How long does the coffee stay good?",
+      a: "It tastes best 1 to 6 weeks after the roast date. Keep it somewhere dry and out of direct sunlight.",
+    },
+    {
+      q: "Do you ship outside Yogyakarta?",
+      a: "Yes, anywhere in Indonesia. Around Jogja we can send it by same-day courier, or you can pick it up by appointment.",
+    },
+  ],
+};

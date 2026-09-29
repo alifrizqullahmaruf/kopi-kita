@@ -1,8 +1,12 @@
 import Link from "next/link";
-import { nav, site, waLink } from "@/lib/site";
+import { site } from "@/lib/site";
+import { getContent, type Locale } from "@/lib/i18n";
 import { WhatsAppIcon } from "./Illustrations";
 
-export default function Footer() {
+export default function Footer({ locale }: { locale: Locale }) {
+  const c = getContent(locale);
+  const { t } = c;
+
   return (
     <footer className="border-t-2 border-hutan/15 bg-krem">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-[1.3fr_1fr_1fr]">
@@ -12,26 +16,20 @@ export default function Footer() {
             <span className="font-display text-2xl">{site.name}</span>
           </div>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-hutan/80">
-            A home roastery in {site.city}. Coffee from across Indonesia, roasted in small batches
-            on {site.roastDays}.
+            {t.footer.blurb(site.city, t.site.roastDays)}
           </p>
-          <a
-            href={waLink()}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-solid mt-6"
-          >
+          <a href={c.wa.hello()} target="_blank" rel="noopener noreferrer" className="btn btn-solid mt-6">
             <WhatsAppIcon className="h-5 w-5" />
-            Chat on WhatsApp
+            {t.footer.chat}
           </a>
         </div>
 
         <div>
-          <h2 className="font-hand text-2xl">Explore</h2>
+          <h2 className="font-hand text-2xl">{t.footer.explore}</h2>
           <ul className="mt-3 space-y-2 font-semibold">
-            {nav.map((n) => (
-              <li key={n.href}>
-                <Link href={n.href} className="hover:underline underline-offset-4">
+            {t.nav.map((n) => (
+              <li key={n.path}>
+                <Link href={c.href(n.path)} className="hover:underline underline-offset-4">
                   {n.label}
                 </Link>
               </li>
@@ -40,13 +38,13 @@ export default function Footer() {
         </div>
 
         <div>
-          <h2 className="font-hand text-2xl">Visit us</h2>
+          <h2 className="font-hand text-2xl">{t.footer.visit}</h2>
           <address className="mt-3 space-y-2 text-sm not-italic leading-relaxed">
             <p>{site.address}</p>
-            <p>{site.hours}</p>
+            <p>{t.site.hours}</p>
             <p>
               <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-4">
-                Open in Google Maps
+                {t.footer.maps}
               </a>
             </p>
             <p>
@@ -58,7 +56,7 @@ export default function Footer() {
         </div>
       </div>
       <p className="mx-auto max-w-6xl px-5 pb-24 text-xs text-hutan/60 sm:px-8">
-        © {new Date().getFullYear()} {site.name}. All orders are handled over WhatsApp.
+        © {new Date().getFullYear()} {site.name}. {t.footer.rights}
       </p>
     </footer>
   );

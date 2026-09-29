@@ -1,17 +1,17 @@
-import type { Product } from "@/lib/data";
-import { roastLevels } from "@/lib/data";
-import { usd, waOrderProduct } from "@/lib/site";
+import { getContent, type Locale, type LocalProduct } from "@/lib/i18n";
 import { CoffeeBag, WhatsAppIcon } from "./Illustrations";
 
-export function roastOf(p: Product) {
-  const i = roastLevels.findIndex((r) => r.id === p.roast);
-  return { ...roastLevels[i], index: i };
+export function roastOf(p: LocalProduct, locale: Locale) {
+  const levels = getContent(locale).roastLevels;
+  const i = levels.findIndex((r) => r.id === p.roast);
+  return { ...levels[i], index: i };
 }
 
 const shortName = (name: string) => name.replace("Kopi Kita ", "");
 
-function Bag({ p, className = "" }: { p: Product; className?: string }) {
-  const r = roastOf(p);
+function Bag({ p, locale, className = "" }: { p: LocalProduct; locale: Locale; className?: string }) {
+  const r = roastOf(p, locale);
+  const { t } = getContent(locale);
   return (
     <CoffeeBag
       title={shortName(p.name)}
@@ -19,15 +19,19 @@ function Bag({ p, className = "" }: { p: Product; className?: string }) {
       label={p.label}
       bean={r.bean}
       roastIndex={r.index}
+      ariaLabel={t.product.bagAria(shortName(p.name))}
+      roastedText={t.product.roasted}
+      date={t.product.bagDate}
       className={`transition-transform duration-500 ease-[cubic-bezier(.2,.8,.2,1)] group-hover:-translate-y-3 group-hover:rotate-[-4deg] ${className}`}
     />
   );
 }
 
-function OrderLink({ p, dark = false }: { p: Product; dark?: boolean }) {
+function OrderLink({ p, locale, dark = false }: { p: LocalProduct; locale: Locale; dark?: boolean }) {
+  const c = getContent(locale);
   return (
     <a
-      href={waOrderProduct(p.name)}
+      href={c.wa.order(p.name)}
       target="_blank"
       rel="noopener noreferrer"
       className={`relative z-10 inline-flex items-center gap-2 rounded-full border-2 px-4 py-2 text-sm font-bold transition-colors ${
@@ -37,13 +41,11 @@ function OrderLink({ p, dark = false }: { p: Product; dark?: boolean }) {
       }`}
     >
       <WhatsAppIcon className="h-4 w-4" />
-      Order
-      <span className="sr-only"> {p.name} on WhatsApp</span>
+      {c.t.product.order}
+      <span className="sr-only">{c.t.product.orderSr(p.name)}</span>
     </a>
   );
 }
-
-const fromPrice = (p: Product) => `from ${usd(p.prices[0].price)} / ${p.prices[0].size}`;
 
 /* ------------------------------------------------------------------ */
 /* Bento — kartu berfoto penuh untuk beranda                           */
@@ -64,8 +66,10 @@ const focus: Record<BentoSize, string> = {
   small: "object-[50%_40%]",
 };
 
-export function BentoPhoto({ p, size }: { p: Product; size: BentoSize }) {
-  const r = roastOf(p);
+export function BentoPhoto({ p, size, locale }: { p: LocalProduct; size: BentoSize; locale: Locale }) {
+  const c = getContent(locale);
+  const { t } = c;
+  const r = roastOf(p, locale);
   const big = size === "large";
   return (
     <article
@@ -74,7 +78,7 @@ export function BentoPhoto({ p, size }: { p: Product; size: BentoSize }) {
     >
       <img
         src={r.photo}
-        alt={`Serving idea for ${p.name}: ${r.serve}`}
+        alt={t.product.servingAlt(p.name, r.serve)}
         width={825}
         height={1024}
         loading="lazy"
@@ -99,16 +103,14 @@ export function BentoPhoto({ p, size }: { p: Product; size: BentoSize }) {
       )}
 
       <div className={`flex flex-col gap-2 ${big ? "p-7 sm:p-9" : "p-6"} ${size === "wide" ? "sm:max-w-[55%]" : ""}`}>
-        <p className="font-hand text-xl leading-none opacity-90">great as an {r.serve}</p>
-        {size !== "small" && (
-          <p className="text-sm font-semibold opacity-80">{r.label} roast, {p.origin}</p>
-        )}
+        <p className="font-hand text-xl leading-none opacity-90">{t.product.greatAs(r.serve)}</p>
+        {size !== "small" && <p className="text-sm font-semibold opacity-80">{t.product.roastOrigin(r.label, p.origin)}</p>}
         <h3 className={`font-display ${big ? "text-[2.6rem] sm:text-6xl" : "text-3xl sm:text-4xl"}`}>{p.name}</h3>
         {big && <p className="max-w-md leading-relaxed opacity-90">{p.description}</p>}
         {size === "wide" && <p className="text-sm opacity-85">{p.notes.join(", ")}</p>}
         <div className="mt-3 flex flex-wrap items-center gap-3">
-          <p className="font-bold">{fromPrice(p)}</p>
-          <OrderLink p={p} dark />
+          <p className="font-bold">{t.product.fromPerSize(c.price(p.prices[0].price), p.prices[0].size)}</p>
+          <OrderLink p={p} locale={locale} dark />
         </div>
       </div>
     </article>
@@ -119,22 +121,24 @@ export function BentoPhoto({ p, size }: { p: Product; size: BentoSize }) {
 /* Kartu katalog — halaman /shop                                      */
 /* ------------------------------------------------------------------ */
 
-export function CatalogCard({ p }: { p: Product }) {
-  const r = roastOf(p);
+export function CatalogCard({ p, locale }: { p: LocalProduct; locale: Locale }) {
+  const c = getContent(locale);
+  const { t } = c;
+  const r = roastOf(p, locale);
   return (
     <article data-catalog-item data-roast={p.roast} className="group flex flex-col overflow-hidden rounded-[2rem] border-2 border-hutan bg-kertas">
       <div className="relative flex h-64 items-end overflow-hidden px-8 pt-8" style={{ background: p.label }}>
-        <Bag p={p} className="-mb-10 w-36" />
+        <Bag p={p} locale={locale} className="-mb-10 w-36" />
         <figure className="absolute top-5 right-5 w-[38%] rotate-[4deg] transition-transform duration-500 group-hover:rotate-0">
           <img
             src={r.photo}
-            alt={`Serving idea for ${p.name}: ${r.serve}`}
+            alt={t.product.servingAlt(p.name, r.serve)}
             width={825}
             height={1024}
             loading="lazy"
             className="aspect-[4/5] w-full rounded-2xl border-[3px] border-kertas object-cover shadow-[0_12px_24px_-10px_rgba(31,59,45,.5)]"
           />
-          <figcaption className="font-hand mt-1 text-center text-lg leading-tight">as an {r.serve}</figcaption>
+          <figcaption className="font-hand mt-1 text-center text-lg leading-tight">{t.product.asServe(r.serve)}</figcaption>
         </figure>
       </div>
       <div className="flex flex-1 flex-col p-6">
@@ -145,9 +149,9 @@ export function CatalogCard({ p }: { p: Product }) {
         <p className="mt-3 leading-relaxed opacity-85">{p.description}</p>
 
         <dl className="mt-5 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
-          <dt className="font-semibold">Roast</dt>
+          <dt className="font-semibold">{t.product.roast}</dt>
           <dd>{r.label}</dd>
-          <dt className="font-semibold">Tastes like</dt>
+          <dt className="font-semibold">{t.product.tastes}</dt>
           <dd>{p.notes.join(", ")}</dd>
         </dl>
 
@@ -155,19 +159,14 @@ export function CatalogCard({ p }: { p: Product }) {
           {p.prices.map((pr) => (
             <li key={pr.size} className="flex items-center justify-between py-2.5">
               <span className="font-semibold">{pr.size}</span>
-              <span className="font-bold">{usd(pr.price)}</span>
+              <span className="font-bold">{c.price(pr.price)}</span>
             </li>
           ))}
         </ul>
 
-        <a
-          href={waOrderProduct(p.name)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-solid mt-6 justify-center"
-        >
+        <a href={c.wa.order(p.name)} target="_blank" rel="noopener noreferrer" className="btn btn-solid mt-6 justify-center">
           <WhatsAppIcon className="h-5 w-5" />
-          Order on WhatsApp
+          {t.product.orderOnWhatsApp}
         </a>
       </div>
     </article>

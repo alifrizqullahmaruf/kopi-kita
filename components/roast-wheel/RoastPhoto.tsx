@@ -1,11 +1,12 @@
-import { roastLevels } from "@/lib/data";
+import type { Content } from "@/lib/i18n";
 import { Bean } from "@/components/Illustrations";
 
 /**
  * Foto contoh sajian dengan judul rasa di atasnya. Foto sebelumnya dipakai
  * sebagai lapisan bawah agar pergantian berupa crossfade (tanpa kilatan).
  */
-export default function RoastPhoto({ idx, prevPhoto }: { idx: number; prevPhoto: string }) {
+export default function RoastPhoto({ c, idx, prevPhoto }: { c: Content; idx: number; prevPhoto: string }) {
+  const { t, roastLevels } = c;
   const level = roastLevels[idx];
   return (
     <div className="relative aspect-2/1 overflow-hidden rounded-[1.5rem] bg-kertas">
@@ -21,7 +22,7 @@ export default function RoastPhoto({ idx, prevPhoto }: { idx: number; prevPhoto:
       <img
         data-rf-photo
         src={level.photo}
-        alt={`An ${level.serve} made with a ${level.label.toLowerCase()} roast`}
+        alt={t.roastWheel.photoAlt(level.serve, level.label)}
         width={825}
         height={1024}
         className="absolute inset-0 h-full w-full object-cover object-[50%_42%]"
@@ -44,7 +45,7 @@ export default function RoastPhoto({ idx, prevPhoto }: { idx: number; prevPhoto:
             i === idx ? "opacity-100 delay-200 duration-500" : "opacity-0 duration-200"
           }`}
         >
-          <p className="font-hand text-xl leading-none opacity-90">great as an {r.serve}</p>
+          <p className="font-hand text-xl leading-none opacity-90">{t.roastWheel.serveAs(r.serve)}</p>
           <p className="font-display mt-1 text-3xl leading-tight sm:text-4xl">{r.taste}</p>
         </div>
       ))}

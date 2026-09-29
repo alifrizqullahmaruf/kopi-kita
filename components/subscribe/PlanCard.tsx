@@ -1,9 +1,10 @@
-import type { plans } from "@/lib/data";
-import { usd, waSubscribe } from "@/lib/site";
+import { getContent, type Locale, type LocalPlan } from "@/lib/i18n";
 import { WhatsAppIcon } from "@/components/Illustrations";
 
 /** Kartu satu paket langganan; paket populer tampil gelap dengan pita miring. */
-export default function PlanCard({ plan: p }: { plan: (typeof plans)[number] }) {
+export default function PlanCard({ plan: p, locale }: { plan: LocalPlan; locale: Locale }) {
+  const c = getContent(locale);
+  const { t } = c;
   const dark = !!p.popular;
   return (
     <li
@@ -14,7 +15,7 @@ export default function PlanCard({ plan: p }: { plan: (typeof plans)[number] }) 
     >
       {dark && (
         <p className="font-hand absolute top-9 -right-16 w-64 rotate-45 bg-krem py-1 text-center text-lg leading-tight text-hutan shadow-[0_4px_10px_-4px_rgba(0,0,0,.4)]">
-          most popular
+          {t.plansSection.popular}
         </p>
       )}
       <h2 className="font-display text-5xl">{p.name}</h2>
@@ -22,17 +23,12 @@ export default function PlanCard({ plan: p }: { plan: (typeof plans)[number] }) 
       <p className="text-sm opacity-75">{p.cups}</p>
       <p className="mt-4 leading-relaxed opacity-90">{p.desc}</p>
       <p className="mt-6 border-t-2 border-dashed border-current/25 pt-5">
-        <span className="font-display text-4xl">{usd(p.price)}</span>
-        <span className="text-sm opacity-75"> / month</span>
+        <span className="font-display text-4xl">{c.price(p.price)}</span>
+        <span className="text-sm opacity-75">{t.plansSection.perMonth}</span>
       </p>
-      <a
-        href={waSubscribe(p.name)}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="btn btn-solid mt-6 justify-center"
-      >
+      <a href={c.wa.subscribe(p.name)} target="_blank" rel="noopener noreferrer" className="btn btn-solid mt-6 justify-center">
         <WhatsAppIcon className="h-5 w-5" />
-        Choose {p.name}
+        {t.plansSection.choose(p.name)}
       </a>
     </li>
   );

@@ -1,22 +1,23 @@
-import { testimonials } from "@/lib/data";
+import { getContent, type Locale } from "@/lib/i18n";
 import SectionHeading from "./SectionHeading";
 
-export default function Testimonials() {
+export default function Testimonials({ locale }: { locale: Locale }) {
+  const { t } = getContent(locale);
   return (
     <section aria-labelledby="judul-testimoni" className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
       <div id="judul-testimoni">
         <SectionHeading
-          note="from our subscribers"
-          title="What our first customers say"
-          text="People who've been drinking our coffee since the very first bag."
+          note={t.testimonialsSection.note}
+          title={t.testimonialsSection.title}
+          text={t.testimonialsSection.text}
         />
       </div>
       <ul data-reveal-group className="mt-14 grid gap-5 md:grid-cols-3 md:items-start">
-        {testimonials.map((t, i) => {
+        {t.testimonials.map((q, i) => {
           const dark = i === 1;
           return (
             <li
-              key={t.name}
+              key={q.name}
               data-reveal-item
               className={`rounded-[2rem] border-2 border-hutan p-7 ${
                 dark ? "bg-hutan text-krem md:mt-12" : "bg-kertas"
@@ -26,10 +27,10 @@ export default function Testimonials() {
                 <span aria-hidden="true" className="font-display block h-12 text-[6.5rem] leading-[0.9] opacity-35">
                   &ldquo;
                 </span>
-                <blockquote className="text-lg leading-relaxed font-medium">{t.quote}</blockquote>
+                <blockquote className="text-lg leading-relaxed font-medium">{q.quote}</blockquote>
                 <figcaption className="mt-6 border-t-2 border-dashed border-current/25 pt-4">
-                  <p className="font-bold">{t.name}</p>
-                  <p className="text-sm opacity-75">{t.detail}</p>
+                  <p className="font-bold">{q.name}</p>
+                  <p className="text-sm opacity-75">{q.detail}</p>
                 </figcaption>
               </figure>
             </li>

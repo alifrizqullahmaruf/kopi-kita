@@ -2,14 +2,15 @@
 
 import { useRef, useState } from "react";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
-import { brewGuides } from "@/lib/data";
+import { getContent, type Locale } from "@/lib/i18n";
 import { SteamCup } from "./Illustrations";
 
 /**
  * Panduan seduh: daftar alat di kiri (tab vertikal), rasio kopi:air
  * ditampilkan besar di kanan. Angka "berguling" saat alat diganti.
  */
-export default function BrewGuide() {
+export default function BrewGuide({ locale }: { locale: Locale }) {
+  const { t, brewGuides } = getContent(locale);
   const [idx, setIdx] = useState(0);
   const root = useRef<HTMLDivElement>(null);
   const first = useRef(true);
@@ -47,7 +48,7 @@ export default function BrewGuide() {
       data-reveal-item
       className="grid overflow-hidden rounded-[2rem] border-2 border-hutan bg-kertas md:grid-cols-[minmax(220px,0.8fr)_2fr]"
     >
-      <div role="tablist" aria-label="Brewing method" aria-orientation="vertical" onKeyDown={onKey} className="flex flex-row divide-x-2 divide-hutan/20 overflow-x-auto border-b-2 border-hutan md:flex-col md:divide-x-0 md:divide-y-2 md:border-r-2 md:border-b-0">
+      <div role="tablist" aria-label={t.brew.tablistAria} aria-orientation="vertical" onKeyDown={onKey} className="flex flex-row divide-x-2 divide-hutan/20 overflow-x-auto border-b-2 border-hutan md:flex-col md:divide-x-0 md:divide-y-2 md:border-r-2 md:border-b-0">
         {brewGuides.map((b, i) => {
           const active = i === idx;
           return (
@@ -75,7 +76,7 @@ export default function BrewGuide() {
 
       <div id="panel-seduh" role="tabpanel" aria-labelledby={`tab-${g.id}`} className="relative p-6 sm:p-10">
         <SteamCup className="wobble-slow absolute top-6 right-6 w-16 text-hutan/60 sm:w-20" />
-        <p className="font-hand text-2xl">coffee : water</p>
+        <p className="font-hand text-2xl">{t.brew.ratioLabel}</p>
         <div className="overflow-hidden">
           <p data-bg-ratio className="font-display text-[clamp(6rem,17vw,12rem)] leading-[0.85] tabular-nums">
             {g.ratio}
@@ -83,9 +84,9 @@ export default function BrewGuide() {
         </div>
         <dl className="mt-6 grid grid-cols-3 gap-4 border-t-2 border-dashed border-hutan/25 pt-5">
           {[
-            ["Grind", g.grind],
-            ["Water", g.temp],
-            ["Time", g.time],
+            [t.brew.grind, g.grind],
+            [t.brew.water, g.temp],
+            [t.brew.time, g.time],
           ].map(([k, v]) => (
             <div key={k} data-bg-swap>
               <dt className="text-sm opacity-70">{k}</dt>

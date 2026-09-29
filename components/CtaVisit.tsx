@@ -1,26 +1,24 @@
-import { site, waLink } from "@/lib/site";
+import { site } from "@/lib/site";
+import { getContent, type Locale } from "@/lib/i18n";
 import { CoffeeBranch, WhatsAppIcon } from "./Illustrations";
 
 /** Penutup halaman: ajakan chat WhatsApp + info mampir. */
-export default function CtaVisit({
-  title = "Want to try before you buy? Just message us.",
-  text = "Ask which coffee suits you, request a sample, or arrange a pickup. We usually reply the same day.",
-}: {
-  title?: string;
-  text?: string;
-}) {
+export default function CtaVisit({ locale, title, text }: { locale: Locale; title?: string; text?: string }) {
+  const c = getContent(locale);
+  const { t } = c;
+
   return (
     <section data-slant className="slant on-dark relative bg-hutan pb-24 text-krem">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr] md:items-end">
           <div>
             <h2 data-split className="font-display text-[clamp(2.8rem,7vw,5.5rem)]">
-              {title}
+              {title ?? t.cta.title}
             </h2>
-            <p className="mt-5 max-w-lg text-lg leading-relaxed opacity-85">{text}</p>
-            <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn btn-solid mt-8 !px-7 !py-4 text-lg">
+            <p className="mt-5 max-w-lg text-lg leading-relaxed opacity-85">{text ?? t.cta.text}</p>
+            <a href={c.wa.hello()} target="_blank" rel="noopener noreferrer" className="btn btn-solid mt-8 !px-7 !py-4 text-lg">
               <WhatsAppIcon className="h-6 w-6" />
-              Chat on WhatsApp
+              {t.cta.button}
             </a>
           </div>
           <CoffeeBranch className="wobble hidden w-56 justify-self-end text-daun md:block" />
@@ -28,9 +26,9 @@ export default function CtaVisit({
 
         <dl data-reveal-group className="mt-16 grid gap-6 border-t-2 border-krem/20 pt-8 sm:grid-cols-3">
           {[
-            ["Address", site.address],
-            ["Roast days", `${site.roastDays}, shipped after a 2-day rest`],
-            ["Pickup", site.hours],
+            [t.cta.address, site.address],
+            [t.cta.roastDays, t.cta.roastDaysValue(t.site.roastDays)],
+            [t.cta.pickup, t.site.hours],
           ].map(([k, v]) => (
             <div key={k} data-reveal-item>
               <dt className="font-hand text-2xl text-daun">{k}</dt>

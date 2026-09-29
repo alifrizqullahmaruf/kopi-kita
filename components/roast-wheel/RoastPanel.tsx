@@ -1,18 +1,20 @@
 import Link from "next/link";
-import { products, type roastLevels } from "@/lib/data";
+import type { Content, LocalRoastLevel } from "@/lib/i18n";
 import RoastProductItem from "./RoastProductItem";
 
 /** Isi kartu untuk satu tingkat sangrai: cocok untuk siapa dan daftar kopinya. */
 export default function RoastPanel({
+  c,
   level: r,
   index,
   active,
 }: {
-  level: (typeof roastLevels)[number];
+  c: Content;
+  level: LocalRoastLevel;
   index: number;
   active: boolean;
 }) {
-  const list = products.filter((p) => p.roast === r.id);
+  const list = c.products.filter((p) => p.roast === r.id);
   return (
     <div
       data-rf-panel={index}
@@ -24,16 +26,16 @@ export default function RoastPanel({
       </p>
       <ul className="mt-4 space-y-2">
         {list.map((p) => (
-          <RoastProductItem key={p.slug} product={p} active={active} />
+          <RoastProductItem key={p.slug} c={c} product={p} active={active} />
         ))}
       </ul>
       <Link
-        href={`/shop?roast=${r.id}`}
+        href={c.href(`/shop?roast=${r.id}`)}
         data-rf-swap
         tabIndex={active ? undefined : -1}
         className="mt-auto self-start pt-4 pb-1 font-semibold underline underline-offset-4"
       >
-        See all {r.label.toLowerCase()} roasts
+        {c.t.roastWheel.seeAll(r.label)}
       </Link>
     </div>
   );
