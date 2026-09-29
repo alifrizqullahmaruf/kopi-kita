@@ -66,6 +66,7 @@ export type Dict = {
     spin: string;
     spinning: string;
     orTap: string;
+    tryIt: string;
     serveAs: (serve: string) => string;
     photoAlt: (serve: string, roast: string) => string;
     live: (roast: string, taste: string) => string;

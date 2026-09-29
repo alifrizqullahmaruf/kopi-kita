@@ -124,7 +124,7 @@ export default function RoastWheel({ locale, heading }: { locale: Locale; headin
   };
 
   return (
-    <div ref={root} className="grid items-center gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
+    <div ref={root} className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
       <div className="flex flex-col gap-10 lg:gap-8">
         {heading}
         <RoastDial

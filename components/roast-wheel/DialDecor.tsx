@@ -6,7 +6,7 @@ import { HandArrow } from "@/components/Illustrations";
  * matahari di sisi kuadran Terang, bulan di sisi kuadran Gelap,
  * dan catatan tangan + panah yang mengarah ke tombol Putar.
  */
-export default function DialDecor() {
+export default function DialDecor({ label }: { label: string }) {
   return (
     <div aria-hidden="true" className="pointer-events-none hidden lg:block">
       {/* matahari ↔ kuadran Terang (kiri-atas) */}
@@ -20,7 +20,7 @@ export default function DialDecor() {
 
       {/* catatan tangan, panah turun ke tombol Putar */}
       <div className="absolute top-[72%] left-full ml-3 w-28 text-krem/80">
-        <p className="font-hand rotate-[-6deg] text-2xl leading-none">coba putar!</p>
+        <p className="font-hand rotate-[-6deg] text-2xl leading-none">{label}</p>
         <HandArrow className="mt-1 w-16 -scale-x-100 rotate-[10deg]" />
       </div>
     </div>

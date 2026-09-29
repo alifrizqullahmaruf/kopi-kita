@@ -88,6 +88,7 @@ export const id: Dict = {
     spin: "Putar, pilihkan untukku",
     spinning: "Memutar…",
     orTap: "atau klik salah satu",
+    tryIt: "coba putar!",
     serveAs: (serve) => `enak diseduh jadi ${serve}`,
     photoAlt: (serve, roast) => `Contoh ${serve} dari kopi sangrai ${roast.toLowerCase()}`,
     live: (roast, taste) => `Sangrai ${roast.toLowerCase()}: ${taste}`,

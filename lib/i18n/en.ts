@@ -88,6 +88,7 @@ export const en: Dict = {
     spin: "Spin it, pick one for me",
     spinning: "Spinning…",
     orTap: "or tap one yourself",
+    tryIt: "give it a spin!",
     serveAs: (serve) => `great as an ${serve}`,
     photoAlt: (serve, roast) => `An ${serve} made with a ${roast.toLowerCase()} roast`,
     live: (roast, taste) => `${roast} roast: ${taste}`,

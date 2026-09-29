@@ -16,7 +16,7 @@ export default function RoastResultCard({ c, idx, prevPhoto }: { c: Content; idx
 
       <RoastPhoto c={c} idx={idx} prevPhoto={prevPhoto} />
 
-      <div className="grid">
+      <div className="grid grid-cols-1">
         {c.roastLevels.map((r, i) => (
           <RoastPanel key={r.id} c={c} level={r} index={i} active={i === idx} />
         ))}

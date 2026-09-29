@@ -105,7 +105,7 @@ export function BentoPhoto({ p, size, locale }: { p: LocalProduct; size: BentoSi
       <div className={`flex flex-col gap-2 ${big ? "p-7 sm:p-9" : "p-6"} ${size === "wide" ? "sm:max-w-[55%]" : ""}`}>
         <p className="font-hand text-xl leading-none opacity-90">{t.product.greatAs(r.serve)}</p>
         {size !== "small" && <p className="text-sm font-semibold opacity-80">{t.product.roastOrigin(r.label, p.origin)}</p>}
-        <h3 className={`font-display ${big ? "text-[2.6rem] sm:text-6xl" : "text-3xl sm:text-4xl"}`}>{p.name}</h3>
+        <h3 className={`font-display ${big ? "text-[2.6rem] sm:text-6xl" : size === "small" ? "text-3xl sm:text-4xl md:text-[1.75rem] lg:text-4xl" : "text-3xl sm:text-4xl"}`}>{p.name}</h3>
         {big && <p className="max-w-md leading-relaxed opacity-90">{p.description}</p>}
         {size === "wide" && <p className="text-sm opacity-85">{p.notes.join(", ")}</p>}
         <div className="mt-3 flex flex-wrap items-center gap-3">

@@ -55,7 +55,7 @@ export default function RoastDial({
 
         <DialNeedle ref={needleRef} />
         <DialKnob color={c.roastLevels[idx].bean} />
-        <DialDecor />
+        <DialDecor label={c.t.roastWheel.tryIt} />
       </div>
 
       <SpinControls c={c} spinning={spinning} onSpin={onSpin} />
