@@ -11,7 +11,7 @@ export default function RoastResultCard({ idx, prevPhoto }: { idx: number; prevP
   return (
     <div data-rf-card className="relative rounded-[2rem] bg-krem p-4 text-hutan sm:p-5">
       <p className="sr-only" aria-live="polite">
-        Sangrai {level.label.toLowerCase()}: {level.taste}
+        {level.label} roast: {level.taste}
       </p>
 
       <RoastPhoto idx={idx} prevPhoto={prevPhoto} />

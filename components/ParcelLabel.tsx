@@ -1,5 +1,5 @@
 import { plans } from "@/lib/data";
-import { rupiah } from "@/lib/site";
+import { usd } from "@/lib/site";
 
 /** Kartu bergaya label kiriman — ringkasan paket langganan. */
 export default function ParcelLabel() {
@@ -9,16 +9,16 @@ export default function ParcelLabel() {
         <div className="rounded-xl border-2 border-dashed border-hutan/50 p-6">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="text-xs font-semibold opacity-70">Dari</p>
+              <p className="text-xs font-semibold opacity-70">From</p>
               <p className="font-display text-2xl">Kopi Kita Roastery</p>
-              <p className="mt-3 text-xs font-semibold opacity-70">Untuk</p>
-              <p className="font-hand text-3xl leading-none">kamu, tiap bulan</p>
+              <p className="mt-3 text-xs font-semibold opacity-70">To</p>
+              <p className="font-hand text-3xl leading-none">you, every month</p>
             </div>
             <div className="wobble-slow grid h-24 w-24 shrink-0 place-items-center rounded-full border-2 border-sangrai text-center text-sangrai">
               <span className="font-hand text-lg leading-tight">
-                kiriman
+                monthly
                 <br />
-                bulanan
+                delivery
               </span>
             </div>
           </div>
@@ -29,11 +29,11 @@ export default function ParcelLabel() {
                   <span className="font-bold">{p.name}</span>
                   <span className="ml-2 text-sm opacity-70">{p.amount}</span>
                 </span>
-                <span className="font-bold whitespace-nowrap">{rupiah(p.price)}</span>
+                <span className="font-bold whitespace-nowrap">{usd(p.price)}</span>
               </li>
             ))}
           </ul>
-          <p className="mt-2 text-xs opacity-70">Harga per bulan, belum termasuk ongkir.</p>
+          <p className="mt-2 text-xs opacity-70">Monthly price, shipping not included.</p>
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ export default function FaqSection() {
   return (
     <section aria-labelledby="judul-faq" className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
       <div id="judul-faq">
-        <SectionHeading title="Yang sering ditanyakan" text="Pertanyaan lain? Tanya langsung saja lewat WhatsApp." />
+        <SectionHeading title="Questions we get a lot" text="Something else on your mind? Just ask us on WhatsApp." />
       </div>
       <div data-reveal-group className="mt-12 divide-y-2 divide-hutan/20 border-y-2 border-hutan">
         {faqs.map((f) => (

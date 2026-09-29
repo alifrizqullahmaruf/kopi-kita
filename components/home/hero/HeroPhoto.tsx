@@ -5,7 +5,7 @@ export default function HeroPhoto() {
       <div data-hero-parallax className="hero-photo">
         <img
           src="/images/seduh-closeup.png"
-          alt="Segelas es kopi hitam yang diseduh dari biji Kopi Kita"
+          alt="A glass of iced black coffee brewed with Kopi Kita beans"
           width={1024}
           height={472}
           fetchPriority="high"

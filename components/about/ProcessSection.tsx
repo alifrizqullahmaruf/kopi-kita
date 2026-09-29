@@ -6,9 +6,9 @@ export default function ProcessSection() {
     <section aria-labelledby="judul-proses" className="bg-daun/35 py-24 md:py-32">
       <div className="mx-auto grid max-w-6xl gap-12 px-5 sm:px-8 md:grid-cols-[1fr_1.2fr]">
         <div className="md:sticky md:top-24 md:self-start">
-          <p className="font-hand text-2xl">dari karung ke cangkir</p>
+          <p className="font-hand text-2xl">from sack to cup</p>
           <h2 id="judul-proses" data-split className="font-display mt-2 text-[clamp(2.6rem,6vw,4.75rem)]">
-            Empat langkah di setiap kantong
+            Four steps behind every bag
           </h2>
         </div>
 

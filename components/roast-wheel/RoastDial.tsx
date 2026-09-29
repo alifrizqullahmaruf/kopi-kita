@@ -29,7 +29,7 @@ export default function RoastDial({
       <div className="relative aspect-square [container-type:inline-size]">
         <div
           role="radiogroup"
-          aria-label="Tingkat sangrai"
+          aria-label="Roast level"
           onKeyDown={onKeyDown}
           className="grid h-full w-full grid-cols-2 gap-[3px] overflow-hidden rounded-full bg-hutan ring-[3px] ring-krem/25"
         >

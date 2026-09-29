@@ -7,9 +7,9 @@ export default function SpinControls({ spinning, onSpin }: { spinning: boolean; 
           <path d="M20 12a8 8 0 1 1-2.34-5.66" />
           <path d="M20 4v5h-5" />
         </svg>
-        {spinning ? "Memutar…" : "Putar, pilihkan untukku"}
+        {spinning ? "Spinning…" : "Spin it, pick one for me"}
       </button>
-      <p className="font-hand text-xl text-krem/80">atau klik salah satu</p>
+      <p className="font-hand text-xl text-krem/80">or tap one yourself</p>
     </div>
   );
 }

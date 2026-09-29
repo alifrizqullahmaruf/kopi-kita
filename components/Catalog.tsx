@@ -5,12 +5,12 @@ import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { products, roastLevels, type RoastLevel } from "@/lib/data";
 import { CatalogCard } from "./ProductCards";
 
-type Filter = "semua" | RoastLevel;
+type Filter = "all" | RoastLevel;
 
-export default function Catalog({ initial = "semua" }: { initial?: Filter }) {
+export default function Catalog({ initial = "all" }: { initial?: Filter }) {
   const [filter, setFilter] = useState<Filter>(initial);
   const root = useRef<HTMLDivElement>(null);
-  const list = filter === "semua" ? products : products.filter((p) => p.roast === filter);
+  const list = filter === "all" ? products : products.filter((p) => p.roast === filter);
 
   useGSAP(
     () => {
@@ -25,14 +25,14 @@ export default function Catalog({ initial = "semua" }: { initial?: Filter }) {
   );
 
   const options: { id: Filter; label: string }[] = [
-    { id: "semua", label: "Semua" },
+    { id: "all", label: "All" },
     ...roastLevels.map((r) => ({ id: r.id, label: r.label })),
   ];
 
   return (
     <div ref={root}>
       <fieldset className="flex flex-wrap items-center gap-2">
-        <legend className="font-hand mb-3 text-2xl">saring menurut tingkat sangrai</legend>
+        <legend className="font-hand mb-3 text-2xl">filter by roast</legend>
         {options.map((o) => {
           const active = o.id === filter;
           return (
@@ -53,7 +53,7 @@ export default function Catalog({ initial = "semua" }: { initial?: Filter }) {
       </fieldset>
 
       <p data-catalog-count className="mt-6 text-sm opacity-75" aria-live="polite">
-        Menampilkan {list.length} kopi
+        Showing {list.length} {list.length === 1 ? "coffee" : "coffees"}
       </p>
 
       <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

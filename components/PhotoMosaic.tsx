@@ -8,11 +8,11 @@ import { WhatsAppIcon } from "./Illustrations";
  * Catatan: foto adalah contoh penyajian, bukan produk yang dijual.
  */
 const tiles = [
-  { src: "/images/seduh-kopi-susu.webp", alt: "Es kopi susu berlapis", caption: "kopi susu sore", w: 825, h: 1024, cls: "col-span-1 row-span-2", pos: "object-[50%_40%]" },
-  { src: "/images/seduh-mocha.webp", alt: "Es mocha dengan potongan cokelat", caption: "mocha di akhir pekan", w: 825, h: 1024, cls: "col-span-1 row-span-2", pos: "object-[50%_42%]" },
-  { src: "/images/seduh-latte.webp", alt: "Es latte dengan lapisan espreso", caption: "latte pagi", w: 825, h: 1024, cls: "col-span-1 row-span-1", pos: "object-[50%_38%]" },
-  { src: "/images/seduh-vanila.webp", alt: "Es latte vanila dengan biji kopi dan sebatang vanila", caption: "latte vanila", w: 825, h: 1024, cls: "col-span-1 row-span-1", pos: "object-[50%_40%]" },
-  { src: "/images/seduh-hitam.webp", alt: "Es kopi hitam dengan sendok takar kayu", caption: "satu sendok, satu gelas", w: 825, h: 1024, cls: "col-span-1 row-span-1", pos: "object-[50%_45%]" },
+  { src: "/images/seduh-kopi-susu.webp", alt: "Layered iced kopi susu, Indonesian-style milk coffee", caption: "afternoon kopi susu", w: 825, h: 1024, cls: "col-span-1 row-span-2", pos: "object-[50%_40%]" },
+  { src: "/images/seduh-mocha.webp", alt: "Iced mocha topped with chocolate shavings", caption: "weekend mocha", w: 825, h: 1024, cls: "col-span-1 row-span-2", pos: "object-[50%_42%]" },
+  { src: "/images/seduh-latte.webp", alt: "Iced latte with a layer of espresso on top", caption: "morning latte", w: 825, h: 1024, cls: "col-span-1 row-span-1", pos: "object-[50%_38%]" },
+  { src: "/images/seduh-vanila.webp", alt: "Iced vanilla latte with coffee beans and a vanilla pod", caption: "vanilla latte", w: 825, h: 1024, cls: "col-span-1 row-span-1", pos: "object-[50%_40%]" },
+  { src: "/images/seduh-hitam.webp", alt: "Iced black coffee next to a wooden measuring scoop", caption: "one scoop, one glass", w: 825, h: 1024, cls: "col-span-1 row-span-1", pos: "object-[50%_45%]" },
 ];
 
 function Tile({ t }: { t: (typeof tiles)[number] }) {
@@ -41,9 +41,9 @@ export default function PhotoMosaic() {
     <section aria-labelledby="judul-mozaik" className="mx-auto max-w-6xl px-5 pb-24 sm:px-8 md:pb-32">
       <div id="judul-mozaik">
         <SectionHeading
-          note="satu kantong, banyak cara"
-          title="Seduh sesukamu di rumah"
-          text="Biji yang sama bisa jadi kopi hitam pagi hari atau es kopi susu sore hari. Foto di bawah adalah contoh penyajian."
+          note="one bag, lots of ways"
+          title="Brew it however you like"
+          text="The same beans can be your black coffee in the morning and an iced kopi susu in the afternoon. The photos below are serving ideas."
         />
       </div>
 
@@ -59,15 +59,15 @@ export default function PhotoMosaic() {
 
         {/* ajakan kirim foto — sekaligus sumber foto asli untuk klien */}
         <div data-reveal-item className="on-dark col-span-1 row-span-1 flex flex-col justify-between rounded-[1.75rem] bg-hutan p-5 text-krem">
-          <p className="font-hand text-2xl leading-tight">punya foto seduhanmu sendiri?</p>
+          <p className="font-hand text-2xl leading-tight">made something with our beans?</p>
           <a
-            href={waLink("Halo Kopi Kita Roastery, saya mau kirim foto seduhan kopi dari kalian.")}
+            href={waLink("Hi Kopi Kita Roastery, I'd like to share a photo of a coffee I made with your beans.")}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 self-start rounded-full border-2 border-krem px-4 py-2 text-sm font-bold transition-colors hover:bg-krem hover:text-hutan"
           >
             <WhatsAppIcon className="h-4 w-4" />
-            Kirim ke kami
+            Send us a photo
           </a>
         </div>
 

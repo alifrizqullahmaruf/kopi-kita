@@ -47,7 +47,7 @@ export default function BrewGuide() {
       data-reveal-item
       className="grid overflow-hidden rounded-[2rem] border-2 border-hutan bg-kertas md:grid-cols-[minmax(220px,0.8fr)_2fr]"
     >
-      <div role="tablist" aria-label="Alat seduh" aria-orientation="vertical" onKeyDown={onKey} className="flex flex-row divide-x-2 divide-hutan/20 overflow-x-auto border-b-2 border-hutan md:flex-col md:divide-x-0 md:divide-y-2 md:border-r-2 md:border-b-0">
+      <div role="tablist" aria-label="Brewing method" aria-orientation="vertical" onKeyDown={onKey} className="flex flex-row divide-x-2 divide-hutan/20 overflow-x-auto border-b-2 border-hutan md:flex-col md:divide-x-0 md:divide-y-2 md:border-r-2 md:border-b-0">
         {brewGuides.map((b, i) => {
           const active = i === idx;
           return (
@@ -75,7 +75,7 @@ export default function BrewGuide() {
 
       <div id="panel-seduh" role="tabpanel" aria-labelledby={`tab-${g.id}`} className="relative p-6 sm:p-10">
         <SteamCup className="wobble-slow absolute top-6 right-6 w-16 text-hutan/60 sm:w-20" />
-        <p className="font-hand text-2xl">kopi : air</p>
+        <p className="font-hand text-2xl">coffee : water</p>
         <div className="overflow-hidden">
           <p data-bg-ratio className="font-display text-[clamp(6rem,17vw,12rem)] leading-[0.85] tabular-nums">
             {g.ratio}
@@ -83,9 +83,9 @@ export default function BrewGuide() {
         </div>
         <dl className="mt-6 grid grid-cols-3 gap-4 border-t-2 border-dashed border-hutan/25 pt-5">
           {[
-            ["Gilingan", g.grind],
-            ["Suhu air", g.temp],
-            ["Waktu", g.time],
+            ["Grind", g.grind],
+            ["Water", g.temp],
+            ["Time", g.time],
           ].map(([k, v]) => (
             <div key={k} data-bg-swap>
               <dt className="text-sm opacity-70">{k}</dt>

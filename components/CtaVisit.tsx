@@ -3,8 +3,8 @@ import { CoffeeBranch, WhatsAppIcon } from "./Illustrations";
 
 /** Penutup halaman: ajakan chat WhatsApp + info mampir. */
 export default function CtaVisit({
-  title = "Mau coba dulu? Chat kami saja.",
-  text = "Tanya kopi mana yang cocok, minta sampel, atau atur jadwal ambil di tempat. Biasanya kami balas di hari yang sama.",
+  title = "Want to try before you buy? Just message us.",
+  text = "Ask which coffee suits you, request a sample, or arrange a pickup. We usually reply the same day.",
 }: {
   title?: string;
   text?: string;
@@ -20,7 +20,7 @@ export default function CtaVisit({
             <p className="mt-5 max-w-lg text-lg leading-relaxed opacity-85">{text}</p>
             <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn btn-solid mt-8 !px-7 !py-4 text-lg">
               <WhatsAppIcon className="h-6 w-6" />
-              Chat di WhatsApp
+              Chat on WhatsApp
             </a>
           </div>
           <CoffeeBranch className="wobble hidden w-56 justify-self-end text-daun md:block" />
@@ -28,9 +28,9 @@ export default function CtaVisit({
 
         <dl data-reveal-group className="mt-16 grid gap-6 border-t-2 border-krem/20 pt-8 sm:grid-cols-3">
           {[
-            ["Alamat", site.address],
-            ["Hari sangrai", `${site.roastDays}, dikirim setelah 2 hari istirahat`],
-            ["Ambil di tempat", site.hours],
+            ["Address", site.address],
+            ["Roast days", `${site.roastDays}, shipped after a 2-day rest`],
+            ["Pickup", site.hours],
           ].map(([k, v]) => (
             <div key={k} data-reveal-item>
               <dt className="font-hand text-2xl text-daun">{k}</dt>

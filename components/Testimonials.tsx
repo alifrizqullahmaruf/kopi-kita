@@ -6,9 +6,9 @@ export default function Testimonials() {
     <section aria-labelledby="judul-testimoni" className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
       <div id="judul-testimoni">
         <SectionHeading
-          note="dari yang sudah langganan"
-          title="Kata pelanggan pertama kami"
-          text="Mereka yang sudah ngopi bareng kami sejak kantong pertama."
+          note="from our subscribers"
+          title="What our first customers say"
+          text="People who've been drinking our coffee since the very first bag."
         />
       </div>
       <ul data-reveal-group className="mt-14 grid gap-5 md:grid-cols-3 md:items-start">

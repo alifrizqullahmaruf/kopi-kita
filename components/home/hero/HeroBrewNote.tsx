@@ -9,7 +9,7 @@ export default function HeroBrewNote() {
         <BeanIcon className="translate-y-1" />
       </span>
       <p className="font-hand w-40 rotate-[4deg] text-xl leading-tight">
-        diseduh V60, lalu dituang ke atas es
+        brewed on a V60, then poured over ice
       </p>
     </div>
   );

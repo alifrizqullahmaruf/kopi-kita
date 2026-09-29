@@ -1,8 +1,8 @@
 // ===================================================================
-// ISI KONTEN — semua data di sini CONTOH. Ganti dengan data asli klien.
+// ISI KONTEN — data dummy untuk portfolio (merek, harga & testimoni fiktif)
 // ===================================================================
 
-export type RoastLevel = "terang" | "sedang" | "sedang-gelap" | "gelap";
+export type RoastLevel = "light" | "medium" | "medium-dark" | "dark";
 
 export const roastLevels: {
   id: RoastLevel;
@@ -14,39 +14,39 @@ export const roastLevels: {
   photo: string; // foto contoh seduhan (ilustrasi, bukan produk yang dijual)
 }[] = [
   {
-    id: "terang",
-    label: "Terang",
-    taste: "Asam segar, buah, floral",
-    forWho: "Suka kopi hitam yang ringan dan wangi, diseduh V60.",
+    id: "light",
+    label: "Light",
+    taste: "Bright, fruity, floral",
+    forWho: "For black coffee drinkers who like it light and fragrant. Made for pour-over.",
     bean: "#B88A58",
-    serve: "es kopi hitam",
+    serve: "iced black coffee",
     photo: "/images/seduh-hitam.webp",
   },
   {
-    id: "sedang",
-    label: "Sedang",
-    taste: "Manis karamel, seimbang",
-    forWho: "Baru mulai ngopi hitam dan ingin rasa yang aman.",
+    id: "medium",
+    label: "Medium",
+    taste: "Caramel-sweet and balanced",
+    forWho: "New to black coffee? Start here. Nothing too sharp, nothing too bitter.",
     bean: "#8B5B34",
-    serve: "es latte",
+    serve: "iced latte",
     photo: "/images/seduh-latte.webp",
   },
   {
-    id: "sedang-gelap",
-    label: "Sedang-gelap",
-    taste: "Cokelat, kacang, body tebal",
-    forWho: "Kopi susu di rumah atau mokapot tiap pagi.",
+    id: "medium-dark",
+    label: "Medium-dark",
+    taste: "Chocolate, nuts, fuller body",
+    forWho: "Made to go with milk. What we'd reach for to make kopi susu or a moka pot every morning.",
     bean: "#5F3B22",
-    serve: "es kopi susu",
+    serve: "iced kopi susu",
     photo: "/images/seduh-kopi-susu.webp",
   },
   {
-    id: "gelap",
-    label: "Gelap",
-    taste: "Pekat, pahit manis, smoky",
-    forWho: "Penggemar kopi tubruk yang kuat.",
+    id: "dark",
+    label: "Dark",
+    taste: "Bold, bittersweet, a little smoky",
+    forWho: "For people who like their coffee strong. Great as kopi tubruk, the unfiltered Javanese way.",
     bean: "#3B2517",
-    serve: "es mocha",
+    serve: "iced mocha",
     photo: "/images/seduh-mocha.webp",
   },
 ];
@@ -65,37 +65,34 @@ export type Product = {
   label: string; // warna label kemasan
 };
 
-// TODO: ganti dengan katalog, harga, dan tanggal sangrai yang asli
 export const products: Product[] = [
   {
     slug: "house-blend",
     name: "Kopi Kita House Blend",
     origin: "Merapi & Temanggung",
-    process: "Arabika–robusta",
-    roast: "sedang-gelap",
-    notes: ["Cokelat hitam", "Gula aren", "Kacang"],
-    description:
-      "Racikan harian kami untuk kopi susu di rumah. Tetap enak diseduh tubruk.",
+    process: "Arabica–robusta blend",
+    roast: "medium-dark",
+    notes: ["Dark chocolate", "Palm sugar", "Roasted peanut"],
+    description: "Our everyday blend, built for kopi susu at home. Still holds up brewed strong as tubruk.",
     prices: [
-      { size: "250 g", price: 65000 },
-      { size: "1 kg", price: 230000 },
+      { size: "250 g", price: 14 },
+      { size: "1 kg", price: 46 },
     ],
     featured: true,
-    badge: "Paling laris",
+    badge: "Best seller",
     label: "#E9DFC8",
   },
   {
-    slug: "merapi-arabika",
-    name: "Arabika Merapi",
-    origin: "Lereng Merapi, Sleman",
+    slug: "merapi-arabica",
+    name: "Merapi Arabica",
+    origin: "Slopes of Mt. Merapi, Sleman",
     process: "Natural",
-    roast: "sedang",
-    notes: ["Nangka", "Karamel", "Rempah"],
-    description:
-      "Kopi dari tetangga sendiri. Manis buah dengan sedikit rempah di ujungnya.",
+    roast: "medium",
+    notes: ["Jackfruit", "Caramel", "Warm spice"],
+    description: "Grown just up the road from us. Sweet and fruity, with a little spice at the finish.",
     prices: [
-      { size: "200 g", price: 85000 },
-      { size: "500 g", price: 195000 },
+      { size: "200 g", price: 16 },
+      { size: "500 g", price: 36 },
     ],
     featured: true,
     label: "#D9E3CF",
@@ -103,31 +100,29 @@ export const products: Product[] = [
   {
     slug: "gayo-wine",
     name: "Gayo Wine",
-    origin: "Aceh Tengah",
+    origin: "Central Aceh, Sumatra",
     process: "Wine process",
-    roast: "terang",
-    notes: ["Anggur", "Tape", "Cokelat susu"],
-    description:
-      "Fermentasi panjang yang bikin aromanya seperti buah matang. Cocok untuk V60.",
+    roast: "light",
+    notes: ["Red grape", "Dried fruit", "Milk chocolate"],
+    description: "A long, slow fermentation gives it the smell of very ripe fruit. Best on a V60.",
     prices: [
-      { size: "200 g", price: 110000 },
-      { size: "500 g", price: 255000 },
+      { size: "200 g", price: 21 },
+      { size: "500 g", price: 48 },
     ],
     featured: true,
     label: "#F1D9C9",
   },
   {
-    slug: "robusta-temanggung",
-    name: "Robusta Temanggung",
-    origin: "Temanggung, Jawa Tengah",
-    process: "Petik merah, natural",
-    roast: "gelap",
-    notes: ["Cokelat pahit", "Tembakau", "Rempah"],
-    description:
-      "Robusta petik merah yang tidak sepat. Pilihan utama untuk tubruk yang pekat.",
+    slug: "temanggung-robusta",
+    name: "Temanggung Robusta",
+    origin: "Temanggung, Central Java",
+    process: "Ripe-picked, natural",
+    roast: "dark",
+    notes: ["Dark cocoa", "Tobacco", "Clove"],
+    description: "Robusta picked only when the cherries are fully red, so it's strong without the harsh, dry aftertaste. Our first choice for tubruk.",
     prices: [
-      { size: "250 g", price: 45000 },
-      { size: "1 kg", price: 160000 },
+      { size: "250 g", price: 11 },
+      { size: "1 kg", price: 34 },
     ],
     featured: true,
     label: "#E6D5B8",
@@ -136,95 +131,93 @@ export const products: Product[] = [
     slug: "kintamani",
     name: "Kintamani",
     origin: "Bangli, Bali",
-    process: "Full wash",
-    roast: "terang",
-    notes: ["Jeruk", "Teh melati", "Madu"],
-    description: "Bersih dan segar, dengan asam jeruk yang ringan.",
+    process: "Washed",
+    roast: "light",
+    notes: ["Orange", "Jasmine tea", "Honey"],
+    description: "Clean and bright, with a gentle citrus acidity.",
     prices: [
-      { size: "200 g", price: 95000 },
-      { size: "500 g", price: 220000 },
+      { size: "200 g", price: 18 },
+      { size: "500 g", price: 41 },
     ],
     label: "#EFE4B8",
   },
   {
     slug: "toraja-sapan",
     name: "Toraja Sapan",
-    origin: "Tana Toraja",
-    process: "Giling basah",
-    roast: "sedang-gelap",
-    notes: ["Rempah", "Cokelat", "Tanah"],
-    description: "Body tebal dan hangat. Enak sendirian, enak juga dengan susu.",
+    origin: "Tana Toraja, Sulawesi",
+    process: "Wet-hulled",
+    roast: "medium-dark",
+    notes: ["Warm spice", "Cocoa", "Earthy"],
+    description: "Heavy, warm and low in acidity. Good on its own, even better with milk.",
     prices: [
-      { size: "200 g", price: 100000 },
-      { size: "500 g", price: 235000 },
+      { size: "200 g", price: 19 },
+      { size: "500 g", price: 44 },
     ],
     label: "#DCCFC0",
   },
 ];
 
-// TODO: sesuaikan paket & harga langganan
 export const plans = [
   {
-    id: "sekantong",
-    name: "Sekantong",
-    amount: "250 g / bulan",
-    cups: "± 16 cangkir",
-    price: 75000,
-    desc: "Untuk yang ngopi beberapa kali seminggu.",
+    id: "one-bag",
+    name: "One Bag",
+    amount: "250 g / month",
+    cups: "about 16 cups",
+    price: 15,
+    desc: "For a few cups a week.",
   },
   {
-    id: "tiap-pagi",
-    name: "Tiap Pagi",
-    amount: "500 g / bulan",
-    cups: "± 33 cangkir",
-    price: 140000,
-    desc: "Satu cangkir setiap pagi, tidak pernah kehabisan.",
+    id: "every-morning",
+    name: "Every Morning",
+    amount: "500 g / month",
+    cups: "about 33 cups",
+    price: 28,
+    desc: "One cup every morning, and you never run out.",
     popular: true,
   },
   {
-    id: "serumah",
-    name: "Serumah",
-    amount: "1 kg / bulan",
-    cups: "± 66 cangkir",
-    price: 260000,
-    desc: "Untuk satu rumah yang semuanya suka kopi.",
+    id: "whole-house",
+    name: "Whole House",
+    amount: "1 kg / month",
+    cups: "about 66 cups",
+    price: 50,
+    desc: "For a home where everyone drinks coffee.",
   },
 ];
 
 export const subscribeSteps = [
   {
-    title: "Pilih paket & kopinya",
-    text: "Kabari kami lewat WhatsApp: paket, jenis kopi, dan mau biji utuh atau digiling.",
+    title: "Pick a plan and a coffee",
+    text: "Message us on WhatsApp with your plan, your coffee, and whether you want whole beans or ground.",
   },
   {
-    title: "Kami sangrai untukmu",
-    text: "Kopi disangrai di hari Selasa atau Jumat, lalu diistirahatkan dua hari.",
+    title: "We roast it for you",
+    text: "We roast on Tuesdays and Fridays, then let the beans rest for two days.",
   },
   {
-    title: "Sampai di rumah",
-    text: "Dikirim di minggu pertama tiap bulan. Bisa ganti kopi atau jeda kapan saja.",
+    title: "It shows up at your door",
+    text: "Ships in the first week of every month. Swap coffees or pause whenever you like.",
   },
 ];
 
-// TODO: WAJIB ganti dengan testimoni asli dari 3 pelanggan lama (dengan izin mereka)
 export const testimonials = [
   {
     quote:
-      "Sudah enam bulan langganan. Kopinya selalu datang masih wangi, dan kalau mau ganti jenis tinggal chat.",
-    name: "Nama Pelanggan 1",
-    detail: "Langganan Tiap Pagi, Sleman",
+      "Six months in, and every bag has arrived smelling fresh. When I want to try something different, I just send a message.",
+    name: "Rina Kusumawati",
+    detail: "Every Morning subscriber, Sleman",
   },
   {
     quote:
-      "House Blend-nya pas sekali untuk kopi susu di rumah. Anak-anak saya sekarang ikut ketagihan.",
-    name: "Nama Pelanggan 2",
-    detail: "Pelanggan sejak 2024, Bantul",
+      "The House Blend is exactly what I wanted for kopi susu at home. Now my kids keep stealing sips.",
+    name: "Bayu Pratama",
+    detail: "Customer since 2024, Bantul",
   },
   {
     quote:
-      "Yang saya suka, tanggal sangrainya selalu ditulis di kemasan. Jadi tahu persis kopinya masih segar.",
-    name: "Nama Pelanggan 3",
-    detail: "Pembeli Gayo Wine, Kota Yogyakarta",
+      "I love that the roast date is written on every bag. I always know exactly how fresh my coffee is.",
+    name: "Sekar Ayuningtyas",
+    detail: "Gayo Wine regular, Yogyakarta",
   },
 ];
 
@@ -233,78 +226,78 @@ export const brewGuides = [
     id: "tubruk",
     name: "Tubruk",
     ratio: "1:12",
-    grind: "Halus",
+    grind: "Fine",
     temp: "93°C",
-    time: "4 menit",
-    steps: "Tuang air panas ke bubuk kopi, aduk sekali, tunggu ampasnya turun, lalu minum pelan-pelan.",
+    time: "4 min",
+    steps: "Indonesia's no-filter brew. Pour hot water straight onto the grounds, stir once, wait for them to settle, then sip slowly.",
   },
   {
     id: "v60",
     name: "V60",
     ratio: "1:15",
-    grind: "Sedang-halus",
+    grind: "Medium-fine",
     temp: "90°C",
-    time: "2½ menit",
-    steps: "Basahi bubuk dan tunggu 30 detik, lalu tuang melingkar dalam tiga tahap.",
+    time: "2½ min",
+    steps: "Wet the grounds and wait 30 seconds, then pour in slow circles in three stages.",
   },
   {
-    id: "mokapot",
-    name: "Mokapot",
+    id: "moka-pot",
+    name: "Moka pot",
     ratio: "1:7",
-    grind: "Sedang-halus",
-    temp: "Air mendidih",
-    time: "5 menit",
-    steps: "Isi air sampai katup, ratakan bubuk tanpa ditekan, panaskan dengan api kecil.",
+    grind: "Medium-fine",
+    temp: "Boiling",
+    time: "5 min",
+    steps: "Fill with water up to the valve, level the grounds without pressing them down, and heat on low.",
   },
   {
     id: "french-press",
     name: "French press",
     ratio: "1:14",
-    grind: "Kasar",
+    grind: "Coarse",
     temp: "94°C",
-    time: "4 menit",
-    steps: "Tuang semua air, tutup, tunggu empat menit, lalu tekan saringan perlahan.",
+    time: "4 min",
+    steps: "Pour in all the water, put the lid on, wait four minutes, then press the plunger down slowly.",
   },
 ];
 
 export const processSteps = [
   {
-    title: "Memilih biji",
-    text: "Kami mencicipi sampel dari petani dan pengepul sebelum membeli. Yang tidak lolos cupping tidak kami jual.",
+    title: "Sourcing",
+    text: "We taste samples from farmers and collectors before we buy anything. If a coffee doesn't pass our cupping, we don't sell it.",
   },
   {
-    title: "Menyangrai",
-    text: "Disangrai dalam batch kecil di rumah kami di Sleman, setiap Selasa dan Jumat.",
+    title: "Roasting",
+    text: "Small batches, roasted at our home in Sleman every Tuesday and Friday.",
   },
   {
-    title: "Mengistirahatkan",
-    text: "Kopi didiamkan 2–3 hari agar gasnya keluar dan rasanya lebih jernih saat diseduh.",
+    title: "Resting",
+    text: "Freshly roasted beans need 2–3 days to release their gas. Rested coffee brews cleaner and tastes clearer.",
   },
   {
-    title: "Mengirim",
-    text: "Dikemas dengan katup satu arah, tanggal sangrai ditulis tangan, lalu dikirim ke seluruh Indonesia.",
+    title: "Shipping",
+    text: "Packed in bags with a one-way valve, roast date written by hand, and sent anywhere in Indonesia.",
   },
 ];
 
 export const faqs = [
   {
-    q: "Apakah bisa minta digiling?",
-    a: "Bisa. Sebutkan alat seduhmu saat memesan (tubruk, V60, mokapot, atau french press), kami giling sesuai ukurannya.",
+    q: "Can you grind the coffee for me?",
+    a: "Yes. Tell us what you brew with (tubruk, V60, moka pot or French press) and we'll grind it to match.",
   },
   {
-    q: "Bagaimana cara bayar?",
-    a: "Untuk sekarang pemesanan lewat WhatsApp, pembayaran dengan transfer bank atau QRIS.",
+    q: "How do I pay?",
+    a: "For now, all orders go through WhatsApp. You can pay by bank transfer or QRIS, Indonesia's standard QR payment.",
   },
   {
-    q: "Apakah langganan bisa dijeda atau dihentikan?",
-    a: "Bisa kapan saja. Cukup kabari kami sebelum tanggal 25 agar pengiriman bulan berikutnya ikut disesuaikan.",
+    q: "Can I pause or cancel my subscription?",
+    a: "Anytime. Just let us know before the 25th so we can adjust next month's delivery.",
   },
   {
-    q: "Berapa lama kopi tetap enak?",
-    a: "Paling nikmat 1–6 minggu setelah tanggal sangrai. Simpan di tempat kering, jauh dari sinar matahari.",
+    q: "How long does the coffee stay good?",
+    a: "It tastes best 1 to 6 weeks after the roast date. Keep it somewhere dry and out of direct sunlight.",
   },
   {
-    q: "Kirim ke luar Yogyakarta?",
-    a: "Ya, ke seluruh Indonesia. Untuk area Jogja bisa kurir instan atau ambil di tempat dengan janji.",
+    q: "Do you ship outside Yogyakarta?",
+    a: "Yes, anywhere in Indonesia. Around Jogja we can send it by same-day courier, or you can pick it up by appointment.",
   },
 ];

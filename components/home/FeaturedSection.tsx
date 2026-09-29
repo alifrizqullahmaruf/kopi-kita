@@ -11,12 +11,12 @@ export default function FeaturedSection() {
     <section aria-labelledby="judul-produk" className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
       <div id="judul-produk">
         <SectionHeading
-          note="di mesin sangrai minggu ini"
-          title="Kopi yang sedang kami sangrai"
-          text="Empat kopi yang paling sering dipesan ulang. Semuanya bisa biji utuh atau digiling sesuai alat seduhmu."
+          note="on the roaster this week"
+          title="What we're roasting right now"
+          text="The four coffees people reorder most. Every one comes as whole beans or ground to suit your brewer."
           action={
-            <Link href="/produk" className="font-semibold underline underline-offset-4">
-              Lihat semua kopi
+            <Link href="/shop" className="font-semibold underline underline-offset-4">
+              See all our coffee
             </Link>
           }
         />

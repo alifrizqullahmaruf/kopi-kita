@@ -1,50 +1,43 @@
 // ===================================================================
-// KONFIGURASI UTAMA — ganti semua nilai bertanda TODO sebelum go-live
+// KONFIGURASI UTAMA — data contoh untuk portfolio
 // ===================================================================
 
 export const site = {
   name: "Kopi Kita Roastery",
-  // TODO: nomor WhatsApp bisnis klien, format internasional tanpa "+" / spasi
+  // nomor WhatsApp, format internasional tanpa "+" / spasi
   whatsapp: "6281234567890",
-  // TODO: alamat & jam asli
   city: "Yogyakarta",
   address: "Jl. Contoh No. 12, Sleman, Yogyakarta",
-  roastDays: "Selasa & Jumat",
-  hours: "Senin–Sabtu, 09.00–17.00 (ambil di tempat dengan janji)",
-  instagram: "https://instagram.com/", // TODO
-  mapsUrl: "https://maps.google.com/?q=Yogyakarta", // TODO
+  roastDays: "Tuesdays & Fridays",
+  hours: "Mon–Sat, 9 am–5 pm (pickup by appointment)",
+  instagram: "https://instagram.com/",
+  mapsUrl: "https://maps.google.com/?q=Yogyakarta",
 };
 
 export const nav = [
-  { href: "/", label: "Beranda" },
-  { href: "/produk", label: "Produk" },
-  { href: "/langganan", label: "Langganan" },
-  { href: "/tentang", label: "Tentang kami" },
+  { href: "/", label: "Home" },
+  { href: "/shop", label: "Shop" },
+  { href: "/subscribe", label: "Subscribe" },
+  { href: "/about", label: "About us" },
 ];
 
 /** Bangun link wa.me dengan pesan yang sudah terisi. */
 export function waLink(message?: string) {
-  const text =
-    message ??
-    `Halo ${site.name}, saya mau tanya-tanya soal kopinya.`;
+  const text = message ?? `Hi ${site.name}, I have a question about your coffee.`;
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`;
 }
 
 export function waOrderProduct(name: string, size?: string) {
-  return waLink(
-    `Halo ${site.name}, saya mau pesan ${name}${size ? ` ukuran ${size}` : ""}. Apakah stoknya ada?`,
-  );
+  return waLink(`Hi ${site.name}, I'd like to order ${name}${size ? ` (${size})` : ""}. Is it in stock?`);
 }
 
 export function waSubscribe(plan: string) {
-  return waLink(
-    `Halo ${site.name}, saya tertarik langganan paket ${plan}. Boleh dijelaskan cara mulainya?`,
-  );
+  return waLink(`Hi ${site.name}, I'm interested in the ${plan} plan. How do I get started?`);
 }
 
-export const rupiah = (n: number) =>
-  new Intl.NumberFormat("id-ID", {
+export const usd = (n: number) =>
+  new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "IDR",
+    currency: "USD",
     maximumFractionDigits: 0,
   }).format(n);

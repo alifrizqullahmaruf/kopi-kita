@@ -11,12 +11,12 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: {
-    default: `${site.name} — Biji kopi segar dari Yogyakarta`,
+    default: `${site.name} — Fresh-roasted coffee from Yogyakarta`,
     template: `%s · ${site.name}`,
   },
   description:
-    "Roastery kopi rumahan di Yogyakarta. Biji kopi Nusantara yang disangrai tiap minggu, bisa beli satuan atau langganan bulanan. Pesan lewat WhatsApp.",
-  openGraph: { locale: "id_ID", siteName: site.name, type: "website" },
+    "A home roastery in Yogyakarta, roasting Indonesian coffee every week. Buy a single bag or subscribe monthly, and order straight through WhatsApp.",
+  openGraph: { locale: "en_US", siteName: site.name, type: "website" },
 };
 
 export const viewport: Viewport = {
@@ -28,7 +28,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="id" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Tandai JS aktif agar elemen animasi tidak berkedip; jaring pengaman 3 detik */}
         <script
@@ -43,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="#konten"
           className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-full focus:bg-hutan focus:px-4 focus:py-2 focus:text-krem"
         >
-          Langsung ke konten
+          Skip to content
         </a>
         <Header />
         <main id="konten">{children}</main>

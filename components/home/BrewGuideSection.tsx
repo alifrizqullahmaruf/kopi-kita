@@ -8,9 +8,9 @@ export default function BrewGuideSection() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div id="judul-seduh">
           <SectionHeading
-            note="sudah punya kopinya?"
-            title="Seduh dengan alat yang ada di rumah"
-            text="Takaran awal yang kami pakai sendiri. Setelah itu, sesuaikan dengan lidahmu."
+            note="got your beans?"
+            title="Brew with whatever you have at home"
+            text="These are the starting recipes we use ourselves. From there, adjust to your own taste."
           />
         </div>
         <div data-reveal-group className="mt-14">

@@ -1,6 +1,6 @@
 import type { Product } from "@/lib/data";
 import { roastLevels } from "@/lib/data";
-import { rupiah, waOrderProduct } from "@/lib/site";
+import { usd, waOrderProduct } from "@/lib/site";
 import { CoffeeBag, WhatsAppIcon } from "./Illustrations";
 
 export function roastOf(p: Product) {
@@ -37,13 +37,13 @@ function OrderLink({ p, dark = false }: { p: Product; dark?: boolean }) {
       }`}
     >
       <WhatsAppIcon className="h-4 w-4" />
-      Pesan
-      <span className="sr-only"> {p.name} lewat WhatsApp</span>
+      Order
+      <span className="sr-only"> {p.name} on WhatsApp</span>
     </a>
   );
 }
 
-const fromPrice = (p: Product) => `mulai ${rupiah(p.prices[0].price)} / ${p.prices[0].size}`;
+const fromPrice = (p: Product) => `from ${usd(p.prices[0].price)} / ${p.prices[0].size}`;
 
 /* ------------------------------------------------------------------ */
 /* Bento — kartu berfoto penuh untuk beranda                           */
@@ -74,7 +74,7 @@ export function BentoPhoto({ p, size }: { p: Product; size: BentoSize }) {
     >
       <img
         src={r.photo}
-        alt={`Saran penyajian ${p.name}: ${r.serve}`}
+        alt={`Serving idea for ${p.name}: ${r.serve}`}
         width={825}
         height={1024}
         loading="lazy"
@@ -99,9 +99,9 @@ export function BentoPhoto({ p, size }: { p: Product; size: BentoSize }) {
       )}
 
       <div className={`flex flex-col gap-2 ${big ? "p-7 sm:p-9" : "p-6"} ${size === "wide" ? "sm:max-w-[55%]" : ""}`}>
-        <p className="font-hand text-xl leading-none opacity-90">enak jadi {r.serve}</p>
+        <p className="font-hand text-xl leading-none opacity-90">great as an {r.serve}</p>
         {size !== "small" && (
-          <p className="text-sm font-semibold opacity-80">Sangrai {r.label.toLowerCase()}, {p.origin}</p>
+          <p className="text-sm font-semibold opacity-80">{r.label} roast, {p.origin}</p>
         )}
         <h3 className={`font-display ${big ? "text-[2.6rem] sm:text-6xl" : "text-3xl sm:text-4xl"}`}>{p.name}</h3>
         {big && <p className="max-w-md leading-relaxed opacity-90">{p.description}</p>}
@@ -116,7 +116,7 @@ export function BentoPhoto({ p, size }: { p: Product; size: BentoSize }) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Kartu katalog — halaman /produk                                    */
+/* Kartu katalog — halaman /shop                                      */
 /* ------------------------------------------------------------------ */
 
 export function CatalogCard({ p }: { p: Product }) {
@@ -128,13 +128,13 @@ export function CatalogCard({ p }: { p: Product }) {
         <figure className="absolute top-5 right-5 w-[38%] rotate-[4deg] transition-transform duration-500 group-hover:rotate-0">
           <img
             src={r.photo}
-            alt={`Saran penyajian ${p.name}: ${r.serve}`}
+            alt={`Serving idea for ${p.name}: ${r.serve}`}
             width={825}
             height={1024}
             loading="lazy"
             className="aspect-[4/5] w-full rounded-2xl border-[3px] border-kertas object-cover shadow-[0_12px_24px_-10px_rgba(31,59,45,.5)]"
           />
-          <figcaption className="font-hand mt-1 text-center text-lg leading-tight">jadi {r.serve}</figcaption>
+          <figcaption className="font-hand mt-1 text-center text-lg leading-tight">as an {r.serve}</figcaption>
         </figure>
       </div>
       <div className="flex flex-1 flex-col p-6">
@@ -145,9 +145,9 @@ export function CatalogCard({ p }: { p: Product }) {
         <p className="mt-3 leading-relaxed opacity-85">{p.description}</p>
 
         <dl className="mt-5 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
-          <dt className="font-semibold">Sangrai</dt>
+          <dt className="font-semibold">Roast</dt>
           <dd>{r.label}</dd>
-          <dt className="font-semibold">Rasa</dt>
+          <dt className="font-semibold">Tastes like</dt>
           <dd>{p.notes.join(", ")}</dd>
         </dl>
 
@@ -155,7 +155,7 @@ export function CatalogCard({ p }: { p: Product }) {
           {p.prices.map((pr) => (
             <li key={pr.size} className="flex items-center justify-between py-2.5">
               <span className="font-semibold">{pr.size}</span>
-              <span className="font-bold">{rupiah(pr.price)}</span>
+              <span className="font-bold">{usd(pr.price)}</span>
             </li>
           ))}
         </ul>
@@ -167,7 +167,7 @@ export function CatalogCard({ p }: { p: Product }) {
           className="btn btn-solid mt-6 justify-center"
         >
           <WhatsAppIcon className="h-5 w-5" />
-          Pesan lewat WhatsApp
+          Order on WhatsApp
         </a>
       </div>
     </article>

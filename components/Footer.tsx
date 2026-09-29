@@ -12,8 +12,8 @@ export default function Footer() {
             <span className="font-display text-2xl">{site.name}</span>
           </div>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-hutan/80">
-            Roastery rumahan di {site.city}. Biji kopi Nusantara, disangrai dalam batch kecil setiap{" "}
-            {site.roastDays}.
+            A home roastery in {site.city}. Coffee from across Indonesia, roasted in small batches
+            on {site.roastDays}.
           </p>
           <a
             href={waLink()}
@@ -22,12 +22,12 @@ export default function Footer() {
             className="btn btn-solid mt-6"
           >
             <WhatsAppIcon className="h-5 w-5" />
-            Chat di WhatsApp
+            Chat on WhatsApp
           </a>
         </div>
 
         <div>
-          <h2 className="font-hand text-2xl">Jelajahi</h2>
+          <h2 className="font-hand text-2xl">Explore</h2>
           <ul className="mt-3 space-y-2 font-semibold">
             {nav.map((n) => (
               <li key={n.href}>
@@ -40,13 +40,13 @@ export default function Footer() {
         </div>
 
         <div>
-          <h2 className="font-hand text-2xl">Mampir</h2>
+          <h2 className="font-hand text-2xl">Visit us</h2>
           <address className="mt-3 space-y-2 text-sm not-italic leading-relaxed">
             <p>{site.address}</p>
             <p>{site.hours}</p>
             <p>
               <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-4">
-                Buka di Google Maps
+                Open in Google Maps
               </a>
             </p>
             <p>
@@ -58,7 +58,7 @@ export default function Footer() {
         </div>
       </div>
       <p className="mx-auto max-w-6xl px-5 pb-24 text-xs text-hutan/60 sm:px-8">
-        © {new Date().getFullYear()} {site.name}. Semua pesanan dilayani lewat WhatsApp.
+        © {new Date().getFullYear()} {site.name}. All orders are handled over WhatsApp.
       </p>
     </footer>
   );

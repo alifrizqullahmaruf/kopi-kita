@@ -18,9 +18,9 @@ export default function Header() {
       <div className="bg-hutan text-krem">
         <ul className="mx-auto flex max-w-6xl items-center justify-center gap-x-4 px-5 py-2 text-[0.8rem] font-semibold sm:gap-x-5">
           {[
-            { text: `Roastery rumahan di ${site.city}`, cls: "flex" },
-            { text: `Sangrai tiap ${site.roastDays}`, cls: "hidden sm:flex" },
-            { text: "Kirim ke seluruh Indonesia", cls: "hidden md:flex" },
+            { text: `Home roastery in ${site.city}`, cls: "flex" },
+            { text: `Roasting ${site.roastDays}`, cls: "hidden sm:flex" },
+            { text: "Shipping across Indonesia", cls: "hidden md:flex" },
           ].map((item, i) => (
             <li key={item.text} className={`${item.cls} items-center gap-4 whitespace-nowrap sm:gap-5`}>
               {i > 0 && <BeanIcon className="opacity-70" />}
@@ -31,13 +31,13 @@ export default function Header() {
       </div>
 
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4 sm:px-8">
-        <Link href="/" className="flex items-center gap-3" aria-label={`${site.name}, ke beranda`}>
+        <Link href="/" className="flex items-center gap-3" aria-label={`${site.name}, home`}>
           {/* Logo klien: ganti /public/logo.svg */}
           <img src="/logo.svg" alt="" width={44} height={44} className="h-11 w-11" />
           <span className="font-display text-[1.6rem] leading-none">Kopi Kita</span>
         </Link>
 
-        <nav aria-label="Navigasi utama" className="hidden md:block">
+        <nav aria-label="Main navigation" className="hidden md:block">
           <ul className="flex items-center gap-1">
             {nav.map((n) => {
               const active = n.href === "/" ? pathname === "/" : pathname.startsWith(n.href);
@@ -66,7 +66,7 @@ export default function Header() {
             className="btn btn-solid hidden !py-2.5 sm:inline-flex"
           >
             <WhatsAppIcon className="h-5 w-5" />
-            Pesan
+            Order
           </a>
           <button
             type="button"
@@ -76,13 +76,13 @@ export default function Header() {
             data-menu-toggle
             onClick={() => setOpen((v) => !v)}
           >
-            {open ? "Tutup" : "Menu"}
+            {open ? "Close" : "Menu"}
           </button>
         </div>
       </div>
 
       {(
-        <nav id="menu-mobile" hidden={!open} aria-label="Navigasi utama mobile" className="border-y-2 border-hutan bg-kertas md:hidden">
+        <nav id="menu-mobile" hidden={!open} aria-label="Mobile navigation" className="border-y-2 border-hutan bg-kertas md:hidden">
           <ul className="mx-auto flex max-w-6xl flex-col px-5 py-2">
             {nav.map((n) => (
               <li key={n.href}>

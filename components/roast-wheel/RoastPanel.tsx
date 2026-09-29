@@ -28,12 +28,12 @@ export default function RoastPanel({
         ))}
       </ul>
       <Link
-        href={`/produk?sangrai=${r.id}`}
+        href={`/shop?roast=${r.id}`}
         data-rf-swap
         tabIndex={active ? undefined : -1}
         className="mt-auto self-start pt-4 pb-1 font-semibold underline underline-offset-4"
       >
-        Lihat semua kopi sangrai {r.label.toLowerCase()}
+        See all {r.label.toLowerCase()} roasts
       </Link>
     </div>
   );

@@ -21,7 +21,7 @@ export default function RoastPhoto({ idx, prevPhoto }: { idx: number; prevPhoto:
       <img
         data-rf-photo
         src={level.photo}
-        alt={`Contoh ${level.serve} dari kopi sangrai ${level.label.toLowerCase()}`}
+        alt={`An ${level.serve} made with a ${level.label.toLowerCase()} roast`}
         width={825}
         height={1024}
         className="absolute inset-0 h-full w-full object-cover object-[50%_42%]"
@@ -44,7 +44,7 @@ export default function RoastPhoto({ idx, prevPhoto }: { idx: number; prevPhoto:
             i === idx ? "opacity-100 delay-200 duration-500" : "opacity-0 duration-200"
           }`}
         >
-          <p className="font-hand text-xl leading-none opacity-90">enak diseduh jadi {r.serve}</p>
+          <p className="font-hand text-xl leading-none opacity-90">great as an {r.serve}</p>
           <p className="font-display mt-1 text-3xl leading-tight sm:text-4xl">{r.taste}</p>
         </div>
       ))}

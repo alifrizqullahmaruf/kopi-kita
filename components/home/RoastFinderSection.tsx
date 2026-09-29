@@ -15,9 +15,9 @@ export default function RoastFinderSection() {
         <RoastWheel
           heading={
             <div>
-              <p className="font-hand text-2xl opacity-85">bingung pilih?</p>
+              <p className="font-hand text-2xl opacity-85">not sure where to start?</p>
               <h2 id="judul-sangrai" data-split className="font-display mt-2 text-[clamp(2.6rem,6vw,4.75rem)] lg:text-[clamp(2.4rem,3.6vw,3.5rem)]">
-                Mulai dari rasa yang kamu suka
+                Start with the flavors you like
               </h2>
             </div>
           }
