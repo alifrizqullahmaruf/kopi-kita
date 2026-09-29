@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { roastLevels } from "@/lib/data";
+import { getContent, type Locale } from "@/lib/i18n";
 import { angleOf, indexAt } from "./roast-wheel/constants";
 import RoastDial from "./roast-wheel/RoastDial";
 import RoastResultCard from "./roast-wheel/RoastResultCard";
@@ -17,7 +18,8 @@ import RoastResultCard from "./roast-wheel/RoastResultCard";
  */
 
 /** `heading` ditaruh di kolom kiri, di atas dial. */
-export default function RoastWheel({ heading }: { heading?: React.ReactNode }) {
+export default function RoastWheel({ locale, heading }: { locale: Locale; heading?: React.ReactNode }) {
+  const c = getContent(locale);
   const [idx, setIdx] = useState(1);
   const [spinning, setSpinning] = useState(false);
   const root = useRef<HTMLDivElement>(null);
@@ -126,6 +128,7 @@ export default function RoastWheel({ heading }: { heading?: React.ReactNode }) {
       <div className="flex flex-col gap-10 lg:gap-8">
         {heading}
         <RoastDial
+          c={c}
           idx={idx}
           spinning={spinning}
           needleRef={needle}
@@ -135,7 +138,7 @@ export default function RoastWheel({ heading }: { heading?: React.ReactNode }) {
           onSpin={spinRandom}
         />
       </div>
-      <RoastResultCard idx={idx} prevPhoto={prevPhoto.current} />
+      <RoastResultCard c={c} idx={idx} prevPhoto={prevPhoto.current} />
     </div>
   );
 }

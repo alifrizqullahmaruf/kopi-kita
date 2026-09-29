@@ -1,4 +1,4 @@
-import type { roastLevels } from "@/lib/data";
+import type { LocalRoastLevel } from "@/lib/i18n";
 import { CORNER, INNER, TEMPS } from "./constants";
 
 /** Satu kuadran dial (tombol radio) untuk satu tingkat sangrai. */
@@ -11,7 +11,7 @@ export default function DialSlice({
   buttonRef,
   onSelect,
 }: {
-  level: (typeof roastLevels)[number];
+  level: LocalRoastLevel;
   levelIndex: number;
   cell: number;
   active: boolean;

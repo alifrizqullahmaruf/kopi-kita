@@ -2,15 +2,18 @@
 
 import { useRef, useState } from "react";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
-import { products, roastLevels, type RoastLevel } from "@/lib/data";
+import type { RoastLevel } from "@/lib/data";
+import { getContent, type Locale } from "@/lib/i18n";
 import { CatalogCard } from "./ProductCards";
 
-type Filter = "semua" | RoastLevel;
+type Filter = "all" | RoastLevel;
 
-export default function Catalog({ initial = "semua" }: { initial?: Filter }) {
+export default function Catalog({ locale, initial = "all" }: { locale: Locale; initial?: Filter }) {
   const [filter, setFilter] = useState<Filter>(initial);
   const root = useRef<HTMLDivElement>(null);
-  const list = filter === "semua" ? products : products.filter((p) => p.roast === filter);
+  const c = getContent(locale);
+  const { t } = c;
+  const list = filter === "all" ? c.products : c.products.filter((p) => p.roast === filter);
 
   useGSAP(
     () => {
@@ -25,14 +28,14 @@ export default function Catalog({ initial = "semua" }: { initial?: Filter }) {
   );
 
   const options: { id: Filter; label: string }[] = [
-    { id: "semua", label: "Semua" },
-    ...roastLevels.map((r) => ({ id: r.id, label: r.label })),
+    { id: "all", label: t.catalog.all },
+    ...c.roastLevels.map((r) => ({ id: r.id, label: r.label })),
   ];
 
   return (
     <div ref={root}>
       <fieldset className="flex flex-wrap items-center gap-2">
-        <legend className="font-hand mb-3 text-2xl">saring menurut tingkat sangrai</legend>
+        <legend className="font-hand mb-3 text-2xl">{t.catalog.legend}</legend>
         {options.map((o) => {
           const active = o.id === filter;
           return (
@@ -53,12 +56,12 @@ export default function Catalog({ initial = "semua" }: { initial?: Filter }) {
       </fieldset>
 
       <p data-catalog-count className="mt-6 text-sm opacity-75" aria-live="polite">
-        Menampilkan {list.length} kopi
+        {t.catalog.showing(list.length)}
       </p>
 
       <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {list.map((p) => (
-          <CatalogCard key={p.slug} p={p} />
+          <CatalogCard key={p.slug} p={p} locale={locale} />
         ))}
       </div>
     </div>

@@ -1,5 +1,5 @@
 import type { KeyboardEvent, RefObject } from "react";
-import { roastLevels } from "@/lib/data";
+import type { Content } from "@/lib/i18n";
 import { CELL_ORDER } from "./constants";
 import DialSlice from "./DialSlice";
 import DialNeedle from "./DialNeedle";
@@ -9,6 +9,7 @@ import DialDecor from "./DialDecor";
 
 /** Dial sangrai: 4 kuadran, jarum, kenop tengah, dan tombol putar. */
 export default function RoastDial({
+  c,
   idx,
   spinning,
   needleRef,
@@ -17,6 +18,7 @@ export default function RoastDial({
   onKeyDown,
   onSpin,
 }: {
+  c: Content;
   idx: number;
   spinning: boolean;
   needleRef: RefObject<HTMLDivElement | null>;
@@ -31,14 +33,14 @@ export default function RoastDial({
       <div className="relative aspect-square [container-type:inline-size]">
         <div
           role="radiogroup"
-          aria-label="Tingkat sangrai"
+          aria-label={c.t.roastWheel.groupAria}
           onKeyDown={onKeyDown}
           className="grid h-full w-full grid-cols-2 gap-[3px] overflow-hidden rounded-full bg-hutan ring-[3px] ring-krem/25"
         >
           {CELL_ORDER.map((li, cell) => (
             <DialSlice
-              key={roastLevels[li].id}
-              level={roastLevels[li]}
+              key={c.roastLevels[li].id}
+              level={c.roastLevels[li]}
               levelIndex={li}
               cell={cell}
               active={li === idx}
@@ -52,11 +54,11 @@ export default function RoastDial({
         </div>
 
         <DialNeedle ref={needleRef} />
-        <DialKnob color={roastLevels[idx].bean} />
+        <DialKnob color={c.roastLevels[idx].bean} />
         <DialDecor />
       </div>
 
-      <SpinControls spinning={spinning} onSpin={onSpin} />
+      <SpinControls c={c} spinning={spinning} onSpin={onSpin} />
     </div>
   );
 }
