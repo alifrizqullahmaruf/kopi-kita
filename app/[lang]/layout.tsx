@@ -19,6 +19,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   if (!isLocale(lang)) return {};
   const { t } = getContent(lang);
   return {
+    // favicon dari logo; .ico untuk browser lama, PNG 180px untuk Home Screen iPhone
+    icons: {
+      icon: [
+        { url: "/logo.svg", type: "image/svg+xml" },
+        { url: "/favicon.ico", sizes: "48x48" },
+      ],
+      apple: "/apple-icon.png",
+    },
     title: { default: t.meta.title, template: `%s · ${site.name}` },
     description: t.meta.description,
     openGraph: { locale: t.meta.ogLocale, siteName: site.name, type: "website" },
